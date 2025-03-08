@@ -1,0 +1,235 @@
+#detail-tour {
+    background: #f8f9fa;
+    /* padding: 20px 0; */
+    /* margin-top: 70px; */
+}
+
+
+
+/* Tour box styles */
+#detail-tour .box-tour {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+/* Image carousel */
+#detail-tour .col-lg-8 {
+    padding: 0;
+}
+
+#detail-tour .ant-carousel {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#detail-tour .ant-carousel img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+/* Tour info section */
+#detail-tour .col-lg-4 {
+    padding: 25px !important;
+    background: white;
+    min-height: 450px;
+    position: relative;
+}
+
+/* Rating and comments */
+#detail-tour .star-rating-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 15px 0;
+}
+
+#detail-tour .star {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+#detail-tour .icon-comment {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+    flex: 1;
+}
+
+#detail-tour .icon-comment span {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+#detail-tour .icon-comment strong {
+    color: #1976d2;
+}
+
+#detail-tour .view {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+}
+
+#detail-tour .view span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#detail-tour .view i {
+    font-size: 1.1rem;
+    color: #1976d2;
+}
+
+/* Tour details table */
+#detail-tour .tt-tour {
+    margin: 20px 0;
+}
+
+#detail-tour .tt-tour table {
+    width: 100%;
+}
+
+#detail-tour .tt-tour td {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#detail-tour .tt-tour td:first-child {
+    color: #666;
+    width: 40%;
+}
+
+#detail-tour .tt-tour td:nth-child(2) {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Book button */
+#detail-tour .btn-dt {
+    position: absolute;
+    right: 25px;
+    bottom: 80px;
+    padding: 10px 30px !important;
+    background: #e91e63 !important;
+    transition: all 0.3s ease !important;
+}
+
+#detail-tour .btn-dt:hover {
+    background: #d81b60 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(233,30,99,0.3) !important;
+}
+
+/* Price section */
+#detail-tour .price {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    font-size: 1.1rem;
+}
+
+#detail-tour .price strong {
+    font-size: 1.4rem;
+    color: #e91e63;
+}
+
+#detail-tour .price span:last-child {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Modal styles */
+.dieukhoan {
+    height: 250px;
+    overflow-y: auto;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    #detail-tour .col-lg-4 {
+        min-height: auto;
+        padding: 20px !important;
+    }
+
+    #detail-tour .ant-carousel img {
+        height: 350px;
+    }
+
+    #detail-tour .btn-dt {
+        position: static;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    #detail-tour .price {
+        position: static;
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    #detail-tour .ant-carousel img {
+        height: 300px;
+    }
+
+    #detail-tour .tt-tour td {
+        display: block;
+        width: 100%;
+        padding: 5px 0;
+    }
+}
+
+/* Utils */
+.ant-message {
+    z-index: 9999999 !important;
+}
+
+/* Thêm style cho container chứa carousel và tên tour */
+.tour-header {
+    width: 100%;
+    margin: 2rem;
+}
+
+/* Style cho carousel */
+.ant-carousel {
+    width: 100%;
+}
+
+.ant-carousel .slick-slide {
+    text-align: center;
+    height: 430px;
+    overflow: hidden;
+}
+
+.ant-carousel .slick-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Style cho tên tour */
+.tour-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d4271;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 0 15px;
+}

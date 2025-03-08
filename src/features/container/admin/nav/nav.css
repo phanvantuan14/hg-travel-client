@@ -1,0 +1,168 @@
+#nav {
+  margin-top: -70px;
+}
+
+#nav .trigger {
+  font-size: 20px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #001529;
+}
+
+#nav .trigger:hover {
+  color: #1890ff;
+  transform: scale(1.1);
+}
+
+#nav .logo {
+  height: 60px;
+  width: 100%;
+  margin: 0;
+  padding: 15px;
+  /* background: #002140; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav .logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+#nav .logo i {
+  font-size: 24px;
+  color: #1890ff;
+}
+
+#nav .ant-menu-dark {
+  /* background: #001529; */
+}
+
+#nav .ant-menu-item {
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+  font-size: 14px;
+}
+
+#nav .ant-menu-item:hover {
+  background: #1890ff !important;
+}
+
+#nav .ant-menu-item-selected {
+  background: #1890ff !important;
+}
+
+#nav .ant-menu-item i {
+  font-size: 16px;
+  min-width: 20px;
+  margin-right: 10px;
+}
+
+#nav .site-layout .site-layout-background {
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+}
+
+#nav .ant-layout-sider {
+  position: sticky !important;
+  top: 0;
+  height: 100vh;
+  left: 0;
+  z-index: 100;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+}
+
+#nav .ant-layout-header {
+  padding: 0;
+  height: 64px;
+  line-height: 64px;
+  background: #fff;
+  /* position: fixed; */
+  width: calc(100% - 20px);
+  z-index: 100;
+}
+
+#nav .ant-layout-content {
+  margin-top: 64px;
+}
+
+#nav .ant-layout {
+  min-height: 100vh;
+}
+
+.ant-menu-item {
+  margin: 0 !important;
+}
+
+.ant-menu-item.ant-menu-item-selected {
+  background-color: #1890ff !important;
+}
+
+.logo {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 16px;
+  background: #001529;
+  text-align: center;
+}
+
+.ant-layout-sider-children {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+.ant-layout-sider-children::-webkit-scrollbar {
+  display: none;
+}
+
+.ant-layout-sider-children::-webkit-scrollbar-track {
+  background: #001529;
+}
+
+.ant-layout-sider-children::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.ant-layout-sider-children::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Ẩn thanh scroll mặc định */
+.ant-layout-sider-children {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+/* Vẫn giữ chức năng scroll nhưng ẩn thanh scroll */
+.ant-layout-sider {
+    position: sticky !important;
+    top: 0;
+    height: 100vh;
+    left: 0;
+    z-index: 100;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.ant-layout-sider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Thêm hiệu ứng shadow để tạo độ sâu */
+.ant-layout-sider {
+    box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+}

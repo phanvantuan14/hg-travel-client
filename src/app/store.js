@@ -21,10 +21,9 @@ import camnangReducer from "../features/container/admin/Camnangdulich/camnangdul
 import userroleReducer from "../features/container/admin/header/userroleSlice"
 import inforReducer from "../features/container/login/inforSlice"
 import chitieuReducer from "../features/container/admin/Doanhthu/chitieuSlice"
-import thanhtoanReducer from "../features/container/detailtour/tour/thanhtoanSlice"
 import chiphiReducer from "../features/container/admin/Chiphi/chiphiSlice"
 import hotelReducer from "../features/container/admin/Hotel/hotelSlice"
-
+import lienhekhachsanReducer from "../features/container/admin/Lienhekhachsan/lienhekhachsanSlice"
 const rootReducer = {
   tintucs: tintucReducer,
   user: userReducer,
@@ -48,9 +47,9 @@ const rootReducer = {
   infor: inforReducer,
   chitieu: chitieuReducer,
   khuyenmais: khuyenmaiReducer,
-  thanhtoans: thanhtoanReducer,
   chiphis: chiphiReducer,
   hotels: hotelReducer,
+  lienhekhachsans: lienhekhachsanReducer
 }
 
 export default configureStore({

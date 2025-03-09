@@ -181,7 +181,7 @@ export default function Listtour() {
                         </div>
                         <div className="money float-left ml-3 text-warning">
                             {(ok.gianguoilon).toLocaleString()} VNĐ<br />
-                            <del> 4.000.000 VNĐ</del>
+                            {/* <del> 4.000.000 VNĐ</del> */}
                         </div>
                     </div>
                 </Link>
@@ -252,7 +252,7 @@ export default function Listtour() {
                             <div className="container">
                                 <div className="row mt-4">
                                     {renderTours()}
-                                                        </div>
+                                 </div>
                                 <div className="row">
                                     <div className="col-12 d-flex justify-content-center mt-4 mb-4">
                                         <Pagination

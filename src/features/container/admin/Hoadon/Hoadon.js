@@ -1,10 +1,10 @@
-
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Button } from '@material-ui/core';
-import { Popconfirm, Popover, Spin, Table, Tooltip } from 'antd';
+import { Popconfirm, Popover, Spin, Table, Tooltip, message } from 'antd';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { hoadonData, removehoadon } from './hoadonSlice';
+import { hoadonData, removehoadon, updatehoadonStatus } from './hoadonSlice';
+
 function Hoadon() {
 
     const columns = [
@@ -24,7 +24,10 @@ function Hoadon() {
             title: 'Tổng tiền',
             dataIndex: 'tien',
         },
-
+        {
+            title: 'Trạng thái',
+            dataIndex: 'status',
+        },
         {
             title: 'Action',
             dataIndex: 'action'
@@ -45,6 +48,24 @@ function Hoadon() {
             actionResult();
         }, 500);
     }
+
+    const handleStatus = async (e, id) => {
+        try {
+            const newStatus = e === 1 ? 0 : 1;
+            await dispatch(updatehoadonStatus({ 
+                id: id,
+                status: newStatus
+            }));
+            
+            message.success('Cập nhật trạng thái thành công!');
+            // Reload data
+            await actionResult();
+        } catch (error) {
+            console.error("Error updating status:", error);
+            message.error('Cập nhật trạng thái thất bại!');
+        }
+    };
+
     const tongtien = (nguoilon, treem, embe, gnl, gte, geb) => {
         return (nguoilon * gnl + treem * gte + embe * geb).toLocaleString();
     }
@@ -74,12 +95,21 @@ function Hoadon() {
                                 <span>{soluong(ok.nguoilon, ok.treem, ok.embe)}</span>
                             </Tooltip>,
                             tien: <span>{tongtien(ok.nguoilon, ok.treem, ok.embe, ok.Tour.gianguoilon, ok.Tour.giatreem, ok.Tour.giaembe)} vnđ</span>,
-                            action:
-                                <div className="action">
-                                    <Popconfirm title="Bạn có muốn xoá？" onConfirm={() => { hangdleDelete(ok.id) }} icon={<QuestionCircleOutlined style={{ color: 'red' }} />}>
-                                        <i className="far fa-trash-alt" ></i>
-                                    </Popconfirm>
-                                </div>
+                            status: <div className="action status">
+                                {ok.status === 1 ? 
+                                    <span onClick={() => handleStatus(ok.status, ok.id)}>
+                                        <i className="far fa-thumbs-up text-primary" title="Đã thanh toán"></i>
+                                    </span> : 
+                                    <span onClick={() => handleStatus(ok.status, ok.id)}>
+                                        <i className="far fa-thumbs-down text-danger" title="Chưa thanh toán"></i>
+                                    </span>
+                                }
+                            </div>,
+                            action: <div className="action">
+                                <Popconfirm title="Bạn có muốn xoá？" onConfirm={() => { hangdleDelete(ok.id) }} icon={<QuestionCircleOutlined style={{ color: 'red' }} />}>
+                                    <i className="far fa-trash-alt" ></i>
+                                </Popconfirm>
+                            </div>
                         }))}
                     />
                 }

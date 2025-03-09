@@ -33,32 +33,30 @@
 #detail-tour .col-lg-4 {
     padding: 25px !important;
     background: white;
-    min-height: 450px;
+    min-height: 500px;
     position: relative;
 }
 
 /* Rating and comments */
 #detail-tour .star-rating-section {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
+    gap: 15px;
     margin-bottom: 20px;
     padding: 15px 0;
+    border-bottom: 1px solid #eee;
 }
 
 #detail-tour .star {
-    display: flex;
-    align-items: center;
-    margin: 0;
+    flex: 0 0 auto;
 }
 
 #detail-tour .icon-comment {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 0;
     flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
 }
 
 #detail-tour .icon-comment span {
@@ -73,10 +71,10 @@
 }
 
 #detail-tour .view {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 0;
+    width: 100%;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
 }
 
 #detail-tour .view span {
@@ -92,21 +90,23 @@
 
 /* Tour details table */
 #detail-tour .tt-tour {
-    margin: 20px 0;
+    margin: 20px 0 120px 0;
 }
 
 #detail-tour .tt-tour table {
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
 }
 
 #detail-tour .tt-tour td {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    vertical-align: top;
 }
 
 #detail-tour .tt-tour td:first-child {
+    width: 120px;
     color: #666;
-    width: 40%;
 }
 
 #detail-tour .tt-tour td:nth-child(2) {
@@ -114,14 +114,16 @@
     color: #333;
 }
 
+
 /* Book button */
 #detail-tour .btn-dt {
     position: absolute;
     right: 25px;
-    bottom: 80px;
+    bottom: 20%;
     padding: 10px 30px !important;
     background: #e91e63 !important;
     transition: all 0.3s ease !important;
+    z-index: 1;
 }
 
 #detail-tour .btn-dt:hover {
@@ -133,9 +135,12 @@
 /* Price section */
 #detail-tour .price {
     position: absolute;
-    left: 25px;
-    bottom: 25px;
+    left: 40px;
+    bottom: 100px;
     font-size: 1.1rem;
+    background: white;
+    padding: 10px 0;
+    width: calc(100% - 50px);
 }
 
 #detail-tour .price strong {
@@ -173,14 +178,17 @@
 
     #detail-tour .btn-dt {
         position: static;
-        margin-top: 20px;
         width: 100%;
+        margin-top: 20px;
     }
 
     #detail-tour .price {
         position: static;
-        margin-top: 20px;
+        margin: 20px 0;
+        padding: 10px;
+        width: 100%;
         text-align: center;
+        background: none;
     }
 }
 
@@ -229,7 +237,72 @@
     font-size: 24px;
     font-weight: 600;
     color: #2d4271;
-    text-align: center;
     margin-top: 1.5rem;
     padding: 0 15px;
+}
+
+/* Styles cho phương thức thanh toán */
+.payment-methods {
+    margin: 20px 0;
+}
+
+.payment-method-item {
+    margin: 12px 0;
+    padding: 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.payment-method-item:hover {
+    background-color: #f5f5f5;
+}
+
+.payment-method-label {
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.payment-method-label i {
+    margin-right: 8px;
+}
+
+/* Icon colors */
+.fa-money-bill-wave {
+    color: #52c41a;
+}
+
+.fa-university {
+    color: #1890ff;
+}
+
+.fa-stripe {
+    color: #722ed1;
+}
+
+/* Style cho nút trong modal */
+.btn-disabled {
+    opacity: 0.6;
+    cursor: not-allowed !important;
+}
+
+.btn-primary {
+    background-color: #1890ff !important;
+    border-color: #1890ff !important;
+}
+
+.terms-agreement {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.terms-agreement input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.terms-agreement label {
+    margin-bottom: 0;
+    cursor: pointer;
 }

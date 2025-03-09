@@ -18,6 +18,7 @@ function Chitietquocgia(props) {
                     {loading ? <div className="spin"><Spin className="mt-5" /></div> :
                         <div>
                             <p>Tên tour:&emsp; <b><i>{tour.name}</i></b></p>
+                            <p>Nơi khởi hành:&emsp; <b><i>{tour.noikhoihang}</i></b></p>
                             <p>Avatar:&emsp;<img width="350px" height="393px" src={tour.avatar} alt="" /></p>
                             <p>Trailer:</p>
                             <div className="text-center">

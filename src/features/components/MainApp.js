@@ -18,6 +18,7 @@ import { tourData } from "../container/admin/Tour/tourSlice";
 import { hotelData } from "../container/admin/Hotel/hotelSlice";
 import { loaitourData } from "../container/admin/Loaitour/loaitourSlice";
 import { diadiemData } from "../container/admin/DiaDiem/diadiemSlice";
+import { lienhekhachsanData } from "../container/admin/Lienhekhachsan/lienhekhachsanSlice";
 
 // Lazy load các components
 const Login = lazy(() => import("../container/login/Login"));
@@ -33,8 +34,10 @@ const DetailHotel = lazy(() => import("../container/hotels/detail/DetailHotel"))
 const Contact = lazy(() => import("../container/hotels/info/Contact"));
 const Error = lazy(() => import("./Error"));
 const Thongtin = lazy(() => import("../container/trangchu/thongtin/Thongtin"));
-const Stripe = lazy(() => import("../teststripe/Stripe"));
 const GioiThieuCongTy = lazy(() => import("../container/gioithieucongty/GioiThieuCongTy"));
+
+
+
 
 // Lazy load các actions khác
 const loadSecondaryData = () => {
@@ -51,7 +54,8 @@ const loadSecondaryData = () => {
         import("../container/admin/Ngaydi/ngaydiSlice").then(module => module.ngaydiData),
         import("../container/admin/Camnangdulich/camnangdulichSlice").then(module => module.camnangdulichData),
         import("../container/login/inforSlice").then(module => module.inforData),
-        import("../container/admin/Chiphi/chiphiSlice").then(module => module.chiphiData)
+        import("../container/admin/Chiphi/chiphiSlice").then(module => module.chiphiData),
+        import("../container/admin/Lienhekhachsan/lienhekhachsanSlice").then(module => module.lienhekhachsanData)
     ]);
 };
 
@@ -66,7 +70,8 @@ export default function MainApp() {
                     dispatch(tourData()),
                     dispatch(loaitourData()),
                     dispatch(diadiemData()),
-                    dispatch(hotelData())
+                    dispatch(hotelData()),
+                    dispatch(lienhekhachsanData())
                 ]);
             } catch (error) {
                 console.error("Error loading primary data:", error);
@@ -138,9 +143,6 @@ export default function MainApp() {
                         <Route path="/dat-tour">
                             <Dattour />
                         </Route>
-                        <Route path="/stripe">
-                            <Stripe />
-                        </Route>
                         <Route path="/hotels">
                             <Hotel />
                         </Route>
@@ -150,6 +152,7 @@ export default function MainApp() {
                         <Route path="/lienhe_khachsan">
                             <Contact />
                         </Route>
+                        
                         <Route path="/gioithieucongty">
                             <GioiThieuCongTy />
                         </Route>

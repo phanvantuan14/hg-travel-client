@@ -45,6 +45,7 @@ import Themchiphi from '../Chiphi/Themchiphi';
 import Hotel from "../Hotel/Hotel"
 import ThemKhachSan from "../Hotel/ThemKhachSan"
 import ChiTietKhachSan from "../Hotel/ChiTietKhachSan"
+import Lienhekhachsan from "../Lienhekhachsan/Lienhekhachsan"
 
 export default function Nav() {
     const match = useRouteMatch();
@@ -220,6 +221,9 @@ export default function Nav() {
             <Route path={`${match.path}/hotel/chitietkhachsan/:id`}>
                 <ChiTietKhachSan />
             </Route>
+            <Route exact path={`${match.path}/lienhekhachsan`}  >
+                <Lienhekhachsan />
+            </Route>
             <Route exact path={`${match.path}/tour`}  >
                 <Tour url={match.url} />
             </Route>
@@ -359,6 +363,9 @@ export default function Nav() {
             </Menu.Item>
                 <Menu.Item key="20" icon={state.collapsed === true ? <span className="fas fa-hotel"></span> : <span className="fas fa-hotel mr-2"></span>}>
                 <Link to={`${match.url}/hotel`}>Quản lý khách sạn</Link>
+            </Menu.Item>
+            <Menu.Item key="21" icon={state.collapsed === true ? <span className="fas fa-hotel"></span> : <span className="fas fa-hotel mr-2"></span>}>
+                <Link to={`${match.url}/lienhekhachsan`}>Quản lý liên hệ đặt khách sạn</Link>
             </Menu.Item>
             <Menu.Item key="3" icon={state.collapsed === true ? <span className="fas fa-users" ></span> : <span className="fas fa-users mr-2"></span>}>
                 <Link to={`${match.url}/taikhoan`}>Quản lý tài khoản</Link>

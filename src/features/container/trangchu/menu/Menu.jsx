@@ -20,14 +20,14 @@ function ListMenu({ isHome = true }) {
     visible: false,
     collapsed2: false,
     visible2: false,
-    name: '', 
-    gioitinh: 1, 
-    diachi: '', 
-    ngaysinh: '', 
-    sdt: '', 
-    anh: "", 
-    linkImg: '', 
-    tenanh: '', 
+    name: '',
+    gioitinh: 1,
+    diachi: '',
+    ngaysinh: '',
+    sdt: '',
+    anh: "",
+    linkImg: '',
+    tenanh: '',
     img: ''
   });
 
@@ -104,8 +104,8 @@ function ListMenu({ isHome = true }) {
     setAvatar('');
   }, [users]);
 
-  const actioninfor = async () => { 
-    await dispatch(inforData()); 
+  const actioninfor = async () => {
+    await dispatch(inforData());
   }
 
   const logout = () => {
@@ -114,6 +114,7 @@ function ListMenu({ isHome = true }) {
     setAvatar('');
     setUser("");
     message.success("Đăng xuất thành công");
+    history.push('/dangnhap');
   }
 
   const onChange = (e) => {
@@ -134,75 +135,75 @@ function ListMenu({ isHome = true }) {
   const onSubmit = async (e) => {
     e.preventDefault();
     const { name, diachi, ngaysinh, gioitinh, sdt, img } = state;
-    
+
     if (!user || !user.id) {
       message.error("Không tìm thấy thông tin người dùng!");
       return;
     }
-    
+
     if (!name.trim() || !diachi.trim() || !ngaysinh.trim() || !sdt.trim()) {
       message.warning("Vui lòng nhập đầy đủ thông tin!");
       return;
     }
-    
+
     try {
       if (img) {
         await storage.ref(`imagesUser/${img.name}`).put(img);
         const anh = await storage.ref("imagesUser").child(img.name).getDownloadURL();
-        const update = await taikhoanApi.edituser({ 
-          idsua: user.id, 
-          name, 
-          avatar: anh, 
-          diachi, 
-          gioitinh, 
-          ngaysinh, 
-          sdt, 
-          status: 1 
+        const update = await taikhoanApi.edituser({
+          idsua: user.id,
+          name,
+          avatar: anh,
+          diachi,
+          gioitinh,
+          ngaysinh,
+          sdt,
+          status: 1
         });
-        
+
         if (update) {
           getprofile();
           message.success("Cập nhật thông tin thành công!");
           setState({
             ...state,
             visible2: false,
-            name: '', 
-            gioitinh: 1, 
-            diachi: '', 
-            ngaysinh: '', 
-            sdt: '', 
-            anh: "", 
-            linkImg: '', 
-            tenanh: '', 
+            name: '',
+            gioitinh: 1,
+            diachi: '',
+            ngaysinh: '',
+            sdt: '',
+            anh: "",
+            linkImg: '',
+            tenanh: '',
             img: ''
           });
         } else {
           message.error("Cập nhật thất bại!");
         }
       } else {
-        const update = await taikhoanApi.edituser({ 
-          idsua: user.id, 
-          name, 
-          diachi, 
-          sdt, 
-          gioitinh, 
-          ngaysinh 
+        const update = await taikhoanApi.edituser({
+          idsua: user.id,
+          name,
+          diachi,
+          sdt,
+          gioitinh,
+          ngaysinh
         });
-        
+
         if (update) {
           getprofile();
           message.success("Cập nhật thông tin thành công!");
           setState({
             ...state,
             visible2: false,
-            name: '', 
-            gioitinh: 1, 
-            diachi: '', 
-            ngaysinh: '', 
-            sdt: '', 
-            anh: "", 
-            linkImg: '', 
-            tenanh: '', 
+            name: '',
+            gioitinh: 1,
+            diachi: '',
+            ngaysinh: '',
+            sdt: '',
+            anh: "",
+            linkImg: '',
+            tenanh: '',
             img: ''
           });
         } else {
@@ -278,8 +279,8 @@ function ListMenu({ isHome = true }) {
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
           <Linkrt className="navbar-brand d-flex align-items-center" to="/">
             <div className="d-flex align-items-center">
-              <img src={logo} alt="Logo" className="img-fluid mr-2" style={{height: "40px"}} />
-              <h1 className="mb-0 h4 text-white">HG Travel</h1>
+              <img src={logo} alt="Logo" className="img-fluid mr-2" style={{ height: "40px" }} />
+              <h1 className="mb-0 h4 text-white text-uppercase ">HG Travel</h1>
             </div>
           </Linkrt>
           <button
@@ -294,56 +295,56 @@ function ListMenu({ isHome = true }) {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="collapsibleNavId">
-          <ul className="navbar-nav m-auto">
-            <li className="nav-item">
-              <Linkrt 
-                className={`nav-link ${isActive("/") ? "active" : ""}`} 
-                to="/"
-              >
-                Trang chủ
-              </Linkrt>
-            </li>
-            <li className="nav-item">
-              <Linkrt 
-                className={`nav-link ${isActive("/list-tour") ? "active" : ""}`} 
-                to="/list-tour"
-              >
-                Tour du lịch
-              </Linkrt>
-            </li>
-            <li className="nav-item">
-              <Linkrt 
-                className={`nav-link ${isActive("/hotels") ? "active" : ""}`} 
-                to="/hotels"
-              >
-                Khách sạn
-              </Linkrt>
-            </li>
-            
-            <li className="nav-item">
-              <Linkrt 
-                className={`nav-link ${isActive("/listtintuc") ? "active" : ""}`} 
-                to="/listtintuc"
-              >
-                Tin tức
-              </Linkrt>
-            </li>
-            <li className="nav-item">
-              <Linkrt 
-                className={`nav-link ${isActive("/gioithieucongty") ? "active" : ""}`} 
-                to="/gioithieucongty"
-              >
-                Giới thiệu công ty
-              </Linkrt>
-            </li>
-          </ul>
+            <ul className="navbar-nav m-auto">
+              <li className="nav-item">
+                <Linkrt
+                  className={`nav-link ${isActive("/") ? "active" : ""}`}
+                  to="/"
+                >
+                  Trang chủ
+                </Linkrt>
+              </li>
+              <li className="nav-item">
+                <Linkrt
+                  className={`nav-link ${isActive("/list-tour") ? "active" : ""}`}
+                  to="/list-tour"
+                >
+                  Tour du lịch
+                </Linkrt>
+              </li>
+              <li className="nav-item">
+                <Linkrt
+                  className={`nav-link ${isActive("/hotels") ? "active" : ""}`}
+                  to="/hotels"
+                >
+                  Khách sạn
+                </Linkrt>
+              </li>
+
+              <li className="nav-item">
+                <Linkrt
+                  className={`nav-link ${isActive("/listtintuc") ? "active" : ""}`}
+                  to="/listtintuc"
+                >
+                  Tin tức
+                </Linkrt>
+              </li>
+              <li className="nav-item">
+                <Linkrt
+                  className={`nav-link ${isActive("/gioithieucongty") ? "active" : ""}`}
+                  to="/gioithieucongty"
+                >
+                  Giới thiệu công ty
+                </Linkrt>
+              </li>
+            </ul>
             <div className="d-flex align-items-center justify-content-center">
               {users ? (
                 <Dropdown overlay={avatarDropdown} trigger={['click']}>
                   <span className="nav-link">
-                    <Avatar 
-                      size="large" 
-                      style={{ border: "2px solid #0abf54" }} 
+                    <Avatar
+                      size="large"
+                      style={{ border: "2px solid #0abf54" }}
                       src={user ? avatar ? avatar : tk : tk}
                     >
                       VK
@@ -377,10 +378,10 @@ function ListMenu({ isHome = true }) {
             <div>
               <div>
                 <div className="center">
-                  <img 
-                    src={user ? avatar ? avatar : tk : tk} 
-                    className="avatar-admin" 
-                    alt="Avatar" 
+                  <img
+                    src={user ? avatar ? avatar : tk : tk}
+                    className="avatar-admin"
+                    alt="Avatar"
                   />
                 </div>
                 <h4 className="text-center mt-3 mb-4">Cá nhân</h4>
@@ -403,10 +404,10 @@ function ListMenu({ isHome = true }) {
                 </div>
               </div>
               <div className="text-center mt-4">
-                <Button 
-                  variant="contained" 
-                  color="secondary" 
-                  onClick={showDrawer2} 
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={showDrawer2}
                   className="mt-2 edit-profile-btn"
                 >
                   Thay đổi thông tin
@@ -428,52 +429,52 @@ function ListMenu({ isHome = true }) {
           <form action="" method="post" onSubmit={onSubmit}>
             <div className="form-group">
               <label htmlFor="name">Tên người dùng</label>
-              <input 
-                type="text" 
-                name="name" 
+              <input
+                type="text"
+                name="name"
                 id="name"
-                value={name} 
-                onChange={onChange} 
-                className="form-control" 
-                placeholder="Nhập tên của bạn" 
+                value={name}
+                onChange={onChange}
+                className="form-control"
+                placeholder="Nhập tên của bạn"
               />
             </div>
             <div className="form-group">
               <label htmlFor="avatar">Thêm ảnh đại diện</label>
               <div className="avatar-upload">
-                <input 
-                  accept="image/*" 
-                  id="icon-button-file" 
-                  type="file" 
-                  onChange={hangdelimage} 
+                <input
+                  accept="image/*"
+                  id="icon-button-file"
+                  type="file"
+                  onChange={hangdelimage}
                   style={{ display: 'none' }}
                 />
                 <label htmlFor="icon-button-file">
-                  <IconButton 
-                    color="primary" 
-                    className="mr-5 ml-4" 
-                    aria-label="upload picture" 
+                  <IconButton
+                    color="primary"
+                    className="mr-5 ml-4"
+                    aria-label="upload picture"
                     component="span"
                   >
                     <i className="fas fa-camera-retro"></i>
                   </IconButton>
                 </label>
                 {linkImg && (
-                  <img 
-                    src={linkImg} 
-                    className="ml-5 preview-avatar" 
-                    style={{ borderRadius: "100%" }} 
-                    height="100px" 
-                    width="100px" 
-                    alt="Preview" 
+                  <img
+                    src={linkImg}
+                    className="ml-5 preview-avatar"
+                    style={{ borderRadius: "100%" }}
+                    height="100px"
+                    width="100px"
+                    alt="Preview"
                   />
                 )}
               </div>
             </div>
             <div className="form-group">
               <label htmlFor="gioitinh">Giới tính</label>
-              <select 
-                className="form-control" 
+              <select
+                className="form-control"
                 id="gioitinh"
                 onChange={hangdleGioitinh}
                 value={gioitinh}
@@ -484,44 +485,44 @@ function ListMenu({ isHome = true }) {
             </div>
             <div className="form-group">
               <label htmlFor="sdt">Số điện thoại</label>
-              <input 
-                type="text" 
-                name="sdt" 
+              <input
+                type="text"
+                name="sdt"
                 id="sdt"
-                value={sdt} 
-                onChange={onChange} 
-                className="form-control" 
-                placeholder="Nhập số điện thoại" 
+                value={sdt}
+                onChange={onChange}
+                className="form-control"
+                placeholder="Nhập số điện thoại"
               />
             </div>
             <div className="form-group">
               <label htmlFor="diachi">Địa chỉ</label>
-              <input 
-                type="text" 
-                name="diachi" 
+              <input
+                type="text"
+                name="diachi"
                 id="diachi"
-                value={diachi} 
-                onChange={onChange} 
-                className="form-control" 
-                placeholder="Nhập địa chỉ" 
+                value={diachi}
+                onChange={onChange}
+                className="form-control"
+                placeholder="Nhập địa chỉ"
               />
             </div>
             <div className="form-group">
               <label htmlFor="ngaysinh">Ngày sinh</label>
-              <input 
-                type="date" 
-                name="ngaysinh" 
+              <input
+                type="date"
+                name="ngaysinh"
                 id="ngaysinh"
-                value={ngaysinh} 
-                onChange={onChange} 
-                className="form-control" 
+                value={ngaysinh}
+                onChange={onChange}
+                className="form-control"
               />
             </div>
             <div className="text-center mt-4">
-              <Button 
-                type="submit" 
-                variant="contained" 
-                color="primary" 
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
                 className="mt-2 submit-btn"
               >
                 Cập nhật

@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 import "./Tour.css";
 function Tourtrongnuoc(props) {
   const tours = useSelector(state => state.tours.tour.data);
+  const binhluans = useSelector(state => state.binhluans.binhluan.data);
   const tour = [];
+
+  // Các hàm tiện ích
   const formatdate = e => {
     if (e) {
       var ngay = e.substr(0, 2)
@@ -16,6 +19,7 @@ function Tourtrongnuoc(props) {
     }
     return null;
   }
+
   const maxDate = e => {
     if (e) {
       var ngayMax = formatdate(e[0].ngay)
@@ -28,20 +32,8 @@ function Tourtrongnuoc(props) {
     }
     return null;
   }
-  if (tours) {
-    var sort = []
-    for (let i = 0; i < tours.length; i++) {
-      sort.unshift(tours[i])
-    }
-    var date = new Date();
-    var today = date.getFullYear() + "-" + ((date.getMonth() + 1) > 10 ? date.getMonth() + 1 : ("0" + (date.getMonth() + 1))) + "-" + (date.getDate() > 10 ? date.getDate() : ("0" + date.getDate()));
-    for (let i = 0; i < sort.length; i++) {
-      if (sort[i].status === 1 && sort[i].vitri === 1 && tour.length < 6 && maxDate(sort[i].Ngaydis) >= today) {
-        tour.push(sort[i])
-      }
-    }
-  }
-  const binhluans = useSelector(state => state.binhluans.binhluan.data);
+
+  // Hàm tính điểm rating của tour
   const tinhdiem = (id) => {
     var binhluanload = []
     if (binhluans) {
@@ -51,18 +43,42 @@ function Tourtrongnuoc(props) {
         }
       }
     }
-    var tong = new Number()
+    var tong = 0;
     if (binhluans) {
       for (let i = 0; i < binhluanload.length; i++) {
         tong += binhluanload[i].star
       }
     }
     var diem = Math.round((tong / +binhluanload.length) * 10) / 10
-    if (isNaN(diem)) {
-      diem = 0
-    }
-    return diem
+    return isNaN(diem) ? 0 : diem;
   }
+
+  // Xử lý và sắp xếp tours
+  if (tours) {
+    var date = new Date();
+    var today = date.getFullYear() + "-" +
+      ((date.getMonth() + 1) > 10 ? date.getMonth() + 1 : ("0" + (date.getMonth() + 1))) + "-" +
+      (date.getDate() > 10 ? date.getDate() : ("0" + date.getDate()));
+
+    // Lọc các tour hợp lệ
+    const validTours = tours.filter(tour =>
+      tour.status === 1 &&
+      tour.vitri === 1 &&
+      maxDate(tour.Ngaydis) >= today
+    );
+
+    // Thêm rating vào mỗi tour và sắp xếp
+    const sortedTours = validTours
+      .map(tour => ({
+        ...tour,
+        rating: tinhdiem(tour.id)
+      }))
+      .sort((a, b) => b.rating - a.rating) // Sắp xếp theo rating giảm dần
+      .slice(0, 6); // Lấy 6 tour đầu tiên
+
+    tour.push(...sortedTours);
+  }
+
   const tinhkhuyenmai = (money, km) => {
     return ((money) - ((money) * (km / 100))).toLocaleString()
   }
@@ -74,7 +90,7 @@ function Tourtrongnuoc(props) {
         <p className="mb-4">
           Du lịch trong nước luôn là lựa chọn tuyệt vời. Những thành phố nhộn
           nhịp, nền văn hóa độc đáo và hấp dẫn.
-      </p>
+        </p>
       </div>
       <div className="container">
         <div className="row justify-content-center">

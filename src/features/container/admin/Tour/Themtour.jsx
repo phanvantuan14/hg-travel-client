@@ -40,57 +40,66 @@ function Themtour(props) {
     const history = useHistory();
     const actionResult = async () => { await dispatch(tourData()) }
     const actionloaitour = async () => { await dispatch(loaitourData()) }
+    const [defaultQuocgia, setDefaultQuocgia] = useState(null);
     useEffect(async () => {
         if (id && tours) {
             var tour = tours.find(x => x.id === +id);
-            var suadichvu = [];
-            for (let i = 0; i < tour.Dichvus.length; i++) {
-                suadichvu.push(`${tour.Dichvus[i].id}`);
+            if (tour) {
+                var suadichvu = [];
+                for (let i = 0; i < tour.Dichvus.length; i++) {
+                    suadichvu.push(`${tour.Dichvus[i].id}`);
+                }
+                var sualoaitour = [];
+                for (let i = 0; i < tour.Loaitours.length; i++) {
+                    sualoaitour.push(`${tour.Loaitours[i].id}`);
+                }
+                var suangaydi = [];
+                for (let i = 0; i < tour.Ngaydis.length; i++) {
+                    suangaydi.push(tour.Ngaydis[i].id);
+                }
+                var suadiadiem = [];
+                for (let i = 0; i < tour.Diadiems.length; i++) {
+                    suadiadiem.push(`${tour.Diadiems[i].id}`);
+                }
+
+                // Lấy quốc gia ID và địa điểm data
+                const quocgiaId = tour.Diadiems[0].quocgiaId;
+                const diadiemData = await quocgiaApi.getOne(quocgiaId).then(data => {
+                    return data.data.Diadiems;
+                });
+
+                setDefaultQuocgia(quocgiaId.toString());
+                setlaydiadiem(diadiemData);
+
+                setState({
+                    ...state,
+                    vitri: tour.vitri,
+                    thoigian: tour.thoigian,
+                    songuoi: tour.songuoi,
+                    name: tour.name,
+                    avatar: tour.avatar,
+                    gianguoilon: tour.gianguoilon,
+                    giatreem: tour.giatreem,
+                    giaembe: tour.giaembe,
+                    trailer: tour.trailer,
+                    bando: tour.bando,
+                    status: tour.status,
+                    dichvuId: suadichvu,
+                    loaitourId: sualoaitour,
+                    checkdiadiem: suadiadiem,
+                    diadiemId: suadiadiem,
+                    checkdichvu: suadichvu,
+                    checkloaitour: sualoaitour,
+                    checkngaydi: suangaydi,
+                    quocgiaId: `${quocgiaId}`,
+                    noikhoihang: tour.noikhoihang
+                });
+                setngaydiId(suangaydi);
+                setluuy(tour.luuy);
+                setchitiettour(tour.chitiettour);
             }
-            var sualoaitour = [];
-            for (let i = 0; i < tour.Loaitours.length; i++) {
-                sualoaitour.push(`${tour.Loaitours[i].id}`);
-            }
-            var suangaydi = [];
-            for (let i = 0; i < tour.Ngaydis.length; i++) {
-                suangaydi.push(tour.Ngaydis[i].id);
-            }
-            var suadiadiem = [];
-            for (let i = 0; i < tour.Diadiems.length; i++) {
-                suadiadiem.push(`${tour.Diadiems[i].id}`);
-            }
-            const diadiemData = await quocgiaApi.getOne(tour.Diadiems[0].quocgiaId).then(data => {
-                return data.data.Diadiems;
-            })
-            setState({
-                ...state,
-                vitri: tour.vitri,
-                thoigian: tour.thoigian,
-                songuoi: tour.songuoi,
-                name: tour.name,
-                avatar: tour.avatar,
-                gianguoilon: tour.gianguoilon,
-                giatreem: tour.giatreem,
-                giaembe: tour.giaembe,
-                trailer: tour.trailer,
-                bando: tour.bando,
-                status: tour.status,
-                dichvuId: suadichvu,
-                loaitourId: sualoaitour,
-                checkdiadiem: suadiadiem,
-                diadiemId: suadiadiem,
-                checkdichvu: suadichvu,
-                checkloaitour: sualoaitour,
-                checkngaydi: suangaydi,
-                quocgiaId: `${tour.Diadiems[0].quocgiaId}`,
-                noikhoihang: tour.noikhoihang
-            })
-            setngaydiId(suangaydi);
-            setluuy(tour.luuy);
-            setchitiettour(tour.chitiettour);
-            setlaydiadiem(diadiemData)
         }
-    }, [tours])
+    }, [tours, id])
     const loaitour = useSelector(state => state.loaitours.loaitour.data)
     const dichvu = useSelector(state => state.dichvus.dichvu.data)
     const loadloaitour = useSelector(state => state.loaitours.loading);
@@ -120,12 +129,12 @@ function Themtour(props) {
                     for (let i = 0; i < fileList.length; i++) {
                         await storage.ref(`imagestour/${fileList[i].originFileObj.name}`).put(fileList[i].originFileObj)
                         const banner = await storage.ref("imagestour").child(fileList[i].originFileObj.name).getDownloadURL();
-                        data.push({ 
-                            tourId: id, 
-                            tenanh: fileList[i].originFileObj.name, 
-                            link: banner, 
-                            banner: 0, 
-                            status: 1 
+                        data.push({
+                            tourId: id,
+                            tenanh: fileList[i].originFileObj.name,
+                            link: banner,
+                            banner: 0,
+                            status: 1
                         })
                     }
                     await anhApi.postanh(data)
@@ -179,10 +188,10 @@ function Themtour(props) {
                 for (let i = 0; i < fileList.length; i++) {
                     await storage.ref(`imagestour/${fileList[i].originFileObj.name}`).put(fileList[i].originFileObj)
                     const banner = await storage.ref("imagestour").child(fileList[i].originFileObj.name).getDownloadURL();
-                    Anhs.push({ 
-                        tenanh: fileList[i].originFileObj.name, 
-                        link: banner, 
-                        banner: 0, 
+                    Anhs.push({
+                        tenanh: fileList[i].originFileObj.name,
+                        link: banner,
+                        banner: 0,
                         status: 1,
                     })
                 }
@@ -421,9 +430,18 @@ function Themtour(props) {
                     </div>
                     <div className="form-group">
                         <label htmlFor="">Quốc gia</label><br />
-                        <Select className="w-50" defaultValue={quocgiaId} onChange={handlequocgiaChange}>
+                        <Select
+                            className="w-50"
+                            value={defaultQuocgia || state.quocgiaId}
+                            onChange={(value) => {
+                                setDefaultQuocgia(value);
+                                handlequocgiaChange(value);
+                            }}
+                        >
                             {quocgiaData.map(quocgia => (
-                                <Option key={quocgia.id}>{quocgia.name}</Option>
+                                <Option key={quocgia.id} value={quocgia.id.toString()}>
+                                    {quocgia.name}
+                                </Option>
                             ))}
                         </Select><br />
                         <label htmlFor="">Địa điểm</label><br />
@@ -434,13 +452,13 @@ function Themtour(props) {
                     </div>
                     <div className="form-group">
                         <label htmlFor="">Nơi khởi hành</label>
-                        <input 
-                            type="text" 
-                            name="noikhoihang" 
-                            value={noikhoihang} 
-                            onChange={onChange} 
-                            className="form-control w-50" 
-                            placeholder="Nhập nơi khởi hành" 
+                        <input
+                            type="text"
+                            name="noikhoihang"
+                            value={state.noikhoihang || ''}
+                            onChange={onChange}
+                            className="form-control w-50"
+                            placeholder="Nhập nơi khởi hành"
                         />
                     </div>
                     <div className="form-group">
@@ -471,7 +489,7 @@ function Themtour(props) {
                         <label htmlFor="">Bản đồ</label>
                         <input type="text" name="bando" value={bando} onChange={onChange} className="form-control w-50" placeholder="" aria-describedby="helpId" />
                     </div>
-                    
+
                     <div className="form-group ">
                         <label htmlFor="">Chi tiết tour</label>
                         <JoditEditor

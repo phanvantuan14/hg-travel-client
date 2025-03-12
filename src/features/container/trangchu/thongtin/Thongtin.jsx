@@ -25,11 +25,10 @@ export default function Thongtin() {
             try {
                 if (vnp_ResponseCode === "00") {
                     const orderData = JSON.parse(pendingOrder);
-                    // Cập nhật hóa đơn với trạng thái thanh toán thành công
                     dispatch(
                         addhoadon({
                             ...orderData,
-                            status: 1, // Đã thanh toán
+                            status: 1,
                         })
                     );
                 } else {

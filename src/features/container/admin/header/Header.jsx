@@ -182,10 +182,10 @@ function Header(props) {
                 <ul className="navbar-nav float-right" onClick={showDrawer}>
                     <li className="nav-item mr-3 mt-2" >{user.name}</li>
                     <li className="nav-item ">
-                        <Avatar alt="Remy Sharp" 
-                            src={user.avatar ? user.avatar : tk} 
-                        name="as" 
-                        className="pick" 
+                        <Avatar alt="Remy Sharp"
+                            src={user.avatar ? user.avatar : tk}
+                            name="as"
+                            className="pick"
                         />
                     </li>
                 </ul>
@@ -199,7 +199,7 @@ function Header(props) {
                 >
                     <div>
                         <div className="center">
-                            <img src={user.avatar ? user.avatar : tk}  className="avatar-admin" alt="" />
+                            <img src={user.avatar ? user.avatar : tk} className="avatar-admin" alt="" />
                         </div>
                         <h4>Cá nhân</h4>
                         <div className="row">

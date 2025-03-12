@@ -8,12 +8,14 @@ import Tintuc from "../container/trangchu/tintuc/Tintuc";
 import Ykienkhachhang from "../container/trangchu/ykienkhachhang/ykienkhachhang";
 import Dichvu from "../container/trangchu/dichvu/Dichvu";
 import Footer from "../container/trangchu/footer/Footer";
+import Diadiemuathich from "../container/trangchu/diadienuathich/Diadiemuathich";
 
 export class Trangchu extends Component {
     render() {
         return (
             <div>
                 <Banner />
+                <Diadiemuathich />
                 <Camnangdulich />
                 <Tourtrongnuoc />
                 <Tournuocngoai />

@@ -13,10 +13,8 @@ import axios from 'axios'
 import loginApi from '../../../api/user/loginApi'
 import { userData } from '../admin/taikhoan/taikhoanSlice'
 const uiConfig = {
-    // Popup signin flow rather than redirect flow.
     signInFlow: 'redirect',
     signInSuccessUrl: '/',
-    // We will display Google and Facebook as auth providers.
     signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ]

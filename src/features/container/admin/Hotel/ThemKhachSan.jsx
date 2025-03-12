@@ -82,7 +82,7 @@ function ThemKhachSan() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        if (name.trim() === "" || diachi.trim() === "" || sdt.trim() === "" || 
+        if (name.trim() === "" || diachi.trim() === "" || sdt.trim() === "" ||
             email.trim() === "" || giaphong === "" || chitiethotel.trim() === "") {
             message.warning("Xin hãy nhập đầy đủ thông tin bắt buộc!");
             return;
@@ -98,12 +98,12 @@ function ThemKhachSan() {
                     for (let i = 0; i < fileList.length; i++) {
                         await storage.ref(`imageshotel/${fileList[i].originFileObj.name}`).put(fileList[i].originFileObj)
                         const banner = await storage.ref("imageshotel").child(fileList[i].originFileObj.name).getDownloadURL();
-                        data.push({ 
-                            hotelId: id, 
-                            tenanh: fileList[i].originFileObj.name, 
-                            link: banner, 
-                            banner: 0, 
-                            status: 1 
+                        data.push({
+                            hotelId: id,
+                            tenanh: fileList[i].originFileObj.name,
+                            link: banner,
+                            banner: 0,
+                            status: 1
                         })
                     }
                     await anhApi.postanh(data)
@@ -116,7 +116,7 @@ function ThemKhachSan() {
                 }
 
                 if (avatar === "") {
-                    await dispatch(updatehotel({ 
+                    await dispatch(updatehotel({
                         idsua: id,
                         name,
                         diachi,
@@ -128,10 +128,10 @@ function ThemKhachSan() {
                         thoigian,
                         chitiethotel,
                         luuy,
-                        status 
+                        status
                     }));
                 } else {
-                    await dispatch(updatehotel({ 
+                    await dispatch(updatehotel({
                         idsua: id,
                         name,
                         diachi,
@@ -145,7 +145,7 @@ function ThemKhachSan() {
                         luuy,
                         status,
                         tenanh,
-                        avatar 
+                        avatar
                     }));
                 }
             } else {
@@ -156,20 +156,20 @@ function ThemKhachSan() {
                 }
                 await storage.ref(`imageshotel/${img.name}`).put(img)
                 const avatar = await storage.ref("imageshotel").child(img.name).getDownloadURL();
-                
+
                 var Anhs = [];
                 for (let i = 0; i < fileList.length; i++) {
                     await storage.ref(`imageshotel/${fileList[i].originFileObj.name}`).put(fileList[i].originFileObj)
                     const banner = await storage.ref("imageshotel").child(fileList[i].originFileObj.name).getDownloadURL();
-                    Anhs.push({ 
-                        tenanh: fileList[i].originFileObj.name, 
-                        link: banner, 
-                        banner: 0, 
+                    Anhs.push({
+                        tenanh: fileList[i].originFileObj.name,
+                        link: banner,
+                        banner: 0,
                         status: 1
                     })
                 }
 
-                await dispatch(addhotel({ 
+                await dispatch(addhotel({
                     name,
                     diachi,
                     sdt,
@@ -183,10 +183,10 @@ function ThemKhachSan() {
                     status,
                     tenanh,
                     avatar,
-                    Anhs 
+                    Anhs
                 }));
             }
-            message.success(`${id ? "Sửa" : "Thêm"} khách sạn thành công!`);
+            // message.success(`${id ? "Sửa" : "Thêm"} khách sạn thành công!`);
             history.push("/admin/hotel");
         } catch (error) {
             message.error(`${id ? "Sửa" : "Thêm"} khách sạn thất bại!`);
@@ -276,18 +276,18 @@ function ThemKhachSan() {
                     <div className="form-group">
                         <label htmlFor="">Ảnh đại diện <span className="text-danger">*</span></label>
                         <div>
-                            <input 
-                                accept="image/*" 
-                                id="icon-button-file" 
-                                type="file" 
+                            <input
+                                accept="image/*"
+                                id="icon-button-file"
+                                type="file"
                                 onChange={hangdelimage}
                                 style={{ display: 'none' }}
                             />
                             <label htmlFor="icon-button-file">
-                                <IconButton 
-                                    color="primary" 
-                                    className="mr-5 ml-4" 
-                                    aria-label="upload picture" 
+                                <IconButton
+                                    color="primary"
+                                    className="mr-5 ml-4"
+                                    aria-label="upload picture"
                                     component="span"
                                 >
                                     <i className="fas fa-camera-retro"></i>
@@ -296,11 +296,11 @@ function ThemKhachSan() {
                             </label>
                             {linkImg || avatar ? (
                                 <div className="preview-image mt-3">
-                                    <Image 
-                                        src={linkImg || avatar} 
-                                        className="ml-5" 
-                                        height="200px" 
-                                        width="300px" 
+                                    <Image
+                                        src={linkImg || avatar}
+                                        className="ml-5"
+                                        height="200px"
+                                        width="300px"
                                         alt="Ảnh đại diện"
                                         style={{ objectFit: 'cover' }}
                                     />
@@ -333,16 +333,16 @@ function ThemKhachSan() {
                             onCancel={handleCancel}
                             width={800}
                         >
-                            <img 
-                                alt="Ảnh xem trước" 
-                                style={{ width: '100%', height: 'auto' }} 
-                                src={previewImage} 
+                            <img
+                                alt="Ảnh xem trước"
+                                style={{ width: '100%', height: 'auto' }}
+                                src={previewImage}
                             />
                         </Modal>
                         <div className="text-secondary mt-2">
                             <small>
-                                * Có thể chọn tối đa 8 ảnh<br/>
-                                * Kích thước tối đa: 2MB/ảnh<br/>
+                                * Có thể chọn tối đa 8 ảnh<br />
+                                * Kích thước tối đa: 2MB/ảnh<br />
                                 * Định dạng: JPG, PNG
                             </small>
                         </div>

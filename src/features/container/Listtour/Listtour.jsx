@@ -22,7 +22,7 @@ export default function Listtour() {
     const [star, setstar] = useState('')
     const [pagination, setPagination] = useState({
         current: 1,
-        pageSize: 6, 
+        pageSize: 6,
     });
 
     const formatdate = e => {
@@ -69,8 +69,8 @@ export default function Listtour() {
     // Lấy ngày hiện tại format YYYY-MM-DD
     const getToday = () => {
         const date = new Date();
-        return date.getFullYear() + "-" + 
-            ((date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : ("0" + (date.getMonth() + 1))) + "-" + 
+        return date.getFullYear() + "-" +
+            ((date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : ("0" + (date.getMonth() + 1))) + "-" +
             (date.getDate() > 9 ? date.getDate() : ("0" + date.getDate()));
     };
 
@@ -78,11 +78,11 @@ export default function Listtour() {
     const getToursInCountry = () => {
         if (!tours) return [];
         const today = getToday();
-        
-        return tours.filter(tour => 
-            tour.status === 1 && 
-            tour.vitri === 1 && 
-            tour.Ngaydis?.length > 0 && 
+
+        return tours.filter(tour =>
+            tour.status === 1 &&
+            tour.vitri === 1 &&
+            tour.Ngaydis?.length > 0 &&
             maxDate(tour.Ngaydis) >= today
         ).sort((a, b) => b.id - a.id); // Sắp xếp mới nhất lên đầu
     };
@@ -91,11 +91,11 @@ export default function Listtour() {
     const getToursOutCountry = () => {
         if (!tours) return [];
         const today = getToday();
-        
-        return tours.filter(tour => 
-            tour.status === 1 && 
-            tour.vitri === 2 && 
-            tour.Ngaydis?.length > 0 && 
+
+        return tours.filter(tour =>
+            tour.status === 1 &&
+            tour.vitri === 2 &&
+            tour.Ngaydis?.length > 0 &&
             maxDate(tour.Ngaydis) >= today
         ).sort((a, b) => b.id - a.id); // Sắp xếp mới nhất lên đầu
     };
@@ -119,7 +119,7 @@ export default function Listtour() {
     // Lấy danh sách tour hiện tại
     const getCurrentTours = () => {
         const { check, statetrongnuoc, statenuocngoai } = state;
-        
+
         if (check === "trong") {
             return statetrongnuoc === "" ? getToursInCountry() : statetrongnuoc;
         } else {
@@ -164,9 +164,9 @@ export default function Listtour() {
             <div className="col-md-6 mb-4" key={ok.id}>
                 <Link to={`/tour/${ok.id}`}>
                     <div className="img rounded">
-                        <img 
-                            src={ok.avatar} 
-                            className="img-fluid" 
+                        <img
+                            src={ok.avatar}
+                            className="img-fluid"
                             alt={ok.name}
                             onError={(e) => {
                                 e.target.onerror = null;
@@ -204,12 +204,9 @@ export default function Listtour() {
     }, [])
 
     const checkstar = value => {
-       
     }
-   
     return (
         <div id="list-tour">
-           
             <div className="container">
                 <div className="row mb-4 bg-white rounded">
                     <div className="col-md-3 border-right pb-3 bg ">
@@ -241,7 +238,7 @@ export default function Listtour() {
                                 <li><span onClick={() => checkstar(1)} style={{ cursor: "pointer" }}><Rate value="1" disabled /><span className="ml-2">từ 1 sao</span><br /></span></li>
                             </ul>
                         </div>
-                        
+
                     </div>
                     <div className="col-md-9">
                         <div className="title text-center mt-3">
@@ -252,7 +249,7 @@ export default function Listtour() {
                             <div className="container">
                                 <div className="row mt-4">
                                     {renderTours()}
-                                 </div>
+                                </div>
                                 <div className="row">
                                     <div className="col-12 d-flex justify-content-center mt-4 mb-4">
                                         <Pagination

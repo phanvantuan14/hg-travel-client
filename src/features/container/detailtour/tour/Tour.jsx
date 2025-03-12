@@ -304,7 +304,7 @@ function Tour(props) {
                         embe,
                         ngaydi,
                         thanhtien: tongtien,
-                        status: 1, // Đã thanh toán
+                        status: 0,
                     };
                     localStorage.setItem(
                         "pendingTourOrder",
@@ -331,6 +331,77 @@ function Tour(props) {
             message.error("Có lỗi xảy ra trong quá trình thanh toán!");
         }
     };
+
+    // const handleOk2 = async () => {
+    //     if (state.dieukhoan === false) {
+    //         message.warning("Bạn chưa đồng ý điều khoản của chúng tôi!");
+    //         return;
+    //     }
+
+    //     try {
+    //         const userId = await taikhoanApi.getOne(+users.id).then((data) => data.id);
+    //         const tourId = id;
+    //         const tongtien = thanhtien(tour_ngay[0].giatreem, tour_ngay[0].giaembe);
+    //         const ngaydi = state.date === "" ? formatlaidate(checkngaydi()) : state.date;
+
+    //         if (paymentMethod === 2) { // VNPAY
+    //             const orderData = {
+    //                 tourId,
+    //                 userId,
+    //                 nguoilon,
+    //                 treem,
+    //                 embe,
+    //                 ngaydi,
+    //                 thanhtien: tongtien,
+    //                 status: 0,
+    //             };
+
+    //             // Lưu thông tin đơn hàng vào localStorage
+    //             localStorage.setItem("pendingTourOrder", JSON.stringify(orderData));
+
+    //             const params = {
+    //                 amount: tongtien,
+    //                 orderInfo: `Thanh toan tour ${tour_ngay[0].name}`,
+    //                 orderType: "tour",
+    //                 tourId: id,
+    //                 bankCode: "", // Có thể thêm bankCode nếu cần
+    //                 language: "vn",
+    //             };
+
+    //             const response = await vnpayApi.createPaymentUrl(params);
+    //             if (response.url) {
+    //                 window.location.href = response.url;
+    //             } else {
+    //                 throw new Error("Không nhận được URL thanh toán");
+    //             }
+    //         } else {
+    //             // Xử lý thanh toán thường
+    //             await dispatch(addhoadon({
+    //                 tourId,
+    //                 userId,
+    //                 nguoilon,
+    //                 treem,
+    //                 embe,
+    //                 ngaydi,
+    //                 thanhtien: tongtien,
+    //                 status: 0,
+    //             }));
+
+    //             setState({
+    //                 ...state,
+    //                 visible2: false,
+    //                 visible: false,
+    //                 loadlaihoadon: state.loadlaihoadon + 1,
+    //             });
+
+    //             dispatch(hoadonData());
+    //             message.success("Đặt tour thành công!");
+    //         }
+    //     } catch (error) {
+    //         console.error("Payment error:", error);
+    //         message.error("Có lỗi xảy ra trong quá trình thanh toán!");
+    //     }
+    // };
 
     const handleCancel2 = (e) => {
         setState({
@@ -458,10 +529,10 @@ function Tour(props) {
                                                         <td>
                                                             <span>
                                                                 {state.date ===
-                                                                ""
+                                                                    ""
                                                                     ? formatlaidate(
-                                                                          checkngaydi()
-                                                                      )
+                                                                        checkngaydi()
+                                                                    )
                                                                     : state.date}
                                                             </span>
                                                         </td>
@@ -478,38 +549,38 @@ function Tour(props) {
                                                                             }
                                                                         >
                                                                             {state.listdate ===
-                                                                            ""
+                                                                                ""
                                                                                 ? ""
                                                                                 : state.listdate.map(
-                                                                                      (
-                                                                                          ok
-                                                                                      ) => (
-                                                                                          <Radio
-                                                                                              style={
-                                                                                                  radioStyle
-                                                                                              }
-                                                                                              key={
-                                                                                                  ok.id
-                                                                                              }
-                                                                                              value={
-                                                                                                  ok.id
-                                                                                              }
-                                                                                          >
-                                                                                              <span
-                                                                                                  onClick={() => {
-                                                                                                      adddate(
-                                                                                                          ok.id
-                                                                                                      );
-                                                                                                  }}
-                                                                                              >
-                                                                                                  {
-                                                                                                      ok.ngay
-                                                                                                  }
-                                                                                              </span>
-                                                                                              <br />
-                                                                                          </Radio>
-                                                                                      )
-                                                                                  )}
+                                                                                    (
+                                                                                        ok
+                                                                                    ) => (
+                                                                                        <Radio
+                                                                                            style={
+                                                                                                radioStyle
+                                                                                            }
+                                                                                            key={
+                                                                                                ok.id
+                                                                                            }
+                                                                                            value={
+                                                                                                ok.id
+                                                                                            }
+                                                                                        >
+                                                                                            <span
+                                                                                                onClick={() => {
+                                                                                                    adddate(
+                                                                                                        ok.id
+                                                                                                    );
+                                                                                                }}
+                                                                                            >
+                                                                                                {
+                                                                                                    ok.ngay
+                                                                                                }
+                                                                                            </span>
+                                                                                            <br />
+                                                                                        </Radio>
+                                                                                    )
+                                                                                )}
                                                                         </Radio.Group>
                                                                         <hr />
                                                                         <div className="text-center">

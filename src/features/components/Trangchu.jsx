@@ -16,10 +16,10 @@ export class Trangchu extends Component {
             <div>
                 <Banner />
                 <Diadiemuathich />
-                <Camnangdulich />
+                <Dichvu />
                 <Tourtrongnuoc />
                 <Tournuocngoai />
-                <Dichvu />
+                <Camnangdulich />
                 <Tintuc />
                 <Ykienkhachhang />
                 <Footer />

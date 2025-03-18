@@ -8,9 +8,8 @@ import { Link } from 'react-router-dom';
 function Diadiemuathich() {
     const [favoriteDestinations, setFavoriteDestinations] = useState([]);
     const diadiemData = useSelector(state => state.diadiems.diadiem.data);
-    const tourData = useSelector(state => state.tours.tour.data);
     console.log(diadiemData)
-    console.log(tourData)
+    const tourData = useSelector(state => state.tours.tour.data);
 
     useEffect(() => {
         if (!diadiemData || !tourData) return;
@@ -18,14 +17,14 @@ function Diadiemuathich() {
         // Lấy danh sách địa điểm có ảnh từ tour
         const processedDestinations = diadiemData
             .map(diadiem => {
-                // Tìm tour đầu tiên có địa điểm này để lấy ảnh
                 const relatedTour = tourData.find(tour =>
                     tour.Diadiems && tour.Diadiems.some(d => d.id === diadiem.id)
                 );
 
+                console.log(relatedTour)
+
                 return {
                     id: diadiem.id,
-                    name: diadiem.name,
                     location: relatedTour ? relatedTour.name : '',
                     image: relatedTour ? relatedTour.avatar : defaultDestination,
                     tourId: relatedTour ? relatedTour.id : null
@@ -74,7 +73,7 @@ function Diadiemuathich() {
                                                 <div className="card-image">
                                                     <img
                                                         src={destination.image}
-                                                        alt={destination.name}
+                                                        alt={destination.location}
                                                         onError={(e) => {
                                                             e.target.onerror = null;
                                                             e.target.src = defaultDestination;
@@ -82,7 +81,6 @@ function Diadiemuathich() {
                                                     />
                                                 </div>
                                                 <div className="card-content">
-                                                    <h5>{destination.name}</h5>
                                                     <p>
                                                         <i className="fas fa-map-marker-alt"></i>
                                                         {destination.location}

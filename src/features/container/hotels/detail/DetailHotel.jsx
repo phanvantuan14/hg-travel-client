@@ -3,6 +3,7 @@ import { Carousel, Rate, Spin } from 'antd'
 import React, { useEffect } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import renderHTML from 'react-render-html';
 import Footer from '../../trangchu/footer/Footer'
 import "./detailHotel.css"
 import Tabss from '../info/Tabs'
@@ -14,7 +15,7 @@ export default function DetailHotel() {
     const history = useHistory();
     const hotels = useSelector(state => state.hotels.hotel.data);
     const loading = useSelector(state => state.hotels.Loading);
-    
+
     const hotel = hotels?.find(item => item.id === parseInt(id));
 
     useEffect(() => {
@@ -32,15 +33,15 @@ export default function DetailHotel() {
     return (
         <div id="detailHotel">
             <div className="container">
-                
-                
+
+
                 <div className="content">
                     <div className="content___title">
                         <div className="content___title---name">
                             <h3>{hotel.name}</h3>
                         </div>
                         <div className="content___title---star">
-                            <i className="fas fa-star mr-2" style={{color: "#ffc107"}}></i>
+                            <i className="fas fa-star mr-2" style={{ color: "#ffc107" }}></i>
                             <span>Đánh giá: </span>
                             <Rate className="pl-2 mr-3" disabled defaultValue={4} />
                             <span>4/5 trong Đánh giá</span>
@@ -68,12 +69,7 @@ export default function DetailHotel() {
                         <div className="col-md-4">
                             <div className="pdBox">
                                 <div className="content___box---map">
-                                    <iframe 
-                                        src={hotel.bando} 
-                                        frameBorder="0" 
-                                        allowFullScreen
-                                        title="location"
-                                    ></iframe>
+                                    {renderHTML(hotel.bando)}
                                 </div>
                                 <div className="content___box---infor">
                                     <div className="info-item">
@@ -98,10 +94,10 @@ export default function DetailHotel() {
                                         </div>
                                     </div>
                                     <div className="content___box---infor---btn">
-                                        <Button 
-                                            onClick={onClickLienHe} 
-                                            className="btn-dt" 
-                                            variant="contained" 
+                                        <Button
+                                            onClick={onClickLienHe}
+                                            className="btn-dt"
+                                            variant="contained"
                                             color="secondary"
                                         >
                                             <i className="fas fa-phone-alt mr-2"></i>
@@ -114,7 +110,7 @@ export default function DetailHotel() {
                     </div>
                 </div>
             </div>
-            
+
             <div className="container mt-4">
                 <Tabss hotel={hotel} />
             </div>

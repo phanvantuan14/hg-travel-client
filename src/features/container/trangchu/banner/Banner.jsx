@@ -16,7 +16,7 @@ function Banner() {
         setLoading(true);
         const response = await anhApi.getAll();
         const data = Array.isArray(response) ? response : response.data || [];
-        const filteredBanners = data.filter(item => item.status ===1);
+        const filteredBanners = data.filter(item => item.status === 1);
 
         setBanners(filteredBanners);
       } catch (err) {
@@ -30,7 +30,6 @@ function Banner() {
     fetchBanners();
   }, []);
 
-  // console.log("Banners:", banners);
 
   if (loading) {
     return <div className="text-center"><Spin /></div>;
@@ -46,11 +45,11 @@ function Banner() {
         {banners.length > 0 ? (
           banners.map(ok => (
             <div className="fit" key={ok.id}>
-              <img 
-                src={ok.link}     
+              <img
+                src={ok.link}
                 alt="Banner"
                 onError={(e) => {
-                  e.target.onerror = null;  
+                  e.target.onerror = null;
                   e.target.src = '/default-banner.jpg'
                 }}
               />

@@ -15,16 +15,16 @@ function Detail(props) {
     const renderTabBar = (props, DefaultTabBar) => (
         <Sticky bottomOffset={80}>
             {({ style }) => (
-                <DefaultTabBar 
-                    {...props} 
-                    className="site-custom-tab-bar" 
-                    style={{ 
+                <DefaultTabBar
+                    {...props}
+                    className="site-custom-tab-bar"
+                    style={{
                         ...style,
                         background: '#fff',
                         zIndex: 1,
                         padding: '10px 0',
                         borderBottom: '1px solid #eee'
-                    }} 
+                    }}
                 />
             )}
         </Sticky>
@@ -33,7 +33,7 @@ function Detail(props) {
     return (
         <div className="detail-container mb-5">
             <StickyContainer>
-                <Tabs 
+                <Tabs
                     defaultActiveKey="1"
                     renderTabBar={renderTabBar}
                 >

@@ -1,6 +1,6 @@
 #login {
     height: 100vh;
-    background: url("./../../images/dangnhap1.jpg") center;
+    background: url("./../../images/tour-hg/Màu\ xuân\ cao\ nguyên.jpg") center;
     background-size: cover;
     margin-top: -70px;
 }
@@ -8,7 +8,11 @@
     width: 35%;
     margin: 0 auto;
     position: relative;
-    top: 150px;
+    top: 100px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
 }
 #login .form {
     width: 100%;
@@ -123,4 +127,25 @@
     #login .box-login {
         width: 80%;
     }
+}
+.forgot-password-container,
+.reset-password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f2f5;
+}
+
+.forgot-password-card,
+.reset-password-card {
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ant-card-head-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
 }

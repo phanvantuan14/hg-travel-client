@@ -280,7 +280,7 @@ function ListMenu({ isHome = true }) {
           <Linkrt className="navbar-brand d-flex align-items-center" to="/">
             <div className="d-flex align-items-center">
               <img src={logo} alt="Logo" className="img-fluid mr-2" style={{ height: "40px" }} />
-              <h1 className="mb-0 h4 text-white text-uppercase ">HG Travel</h1>
+              <h1 className="mb-0 h4 text-white">HG Travel</h1>
             </div>
           </Linkrt>
           <button

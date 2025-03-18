@@ -54,7 +54,7 @@ export default function Nav() {
         collapsed: true,
         visible: true
     })
-   
+
     const toggle = () => {
         setState({
             collapsed: !state.collapsed,
@@ -63,9 +63,6 @@ export default function Nav() {
     const user = useSelector(state => state.infor.infor.data);
     const quanlytintuc = (
         <div>
-            <Route exact path={match.path}>
-                <Doanhthu />
-            </Route>
             <Route exact path={`${match.path}/tintuc`}  >
                 <Tintuc url={match.url} />
             </Route>
@@ -82,9 +79,6 @@ export default function Nav() {
     )
     const quanlybinhluan = (
         <div>
-            <Route exact path={match.path}>
-                <Doanhthu />
-            </Route>
             <Route exact path={`${match.path}/binhluan`}  >
                 <Binhluan url={match.url} />
             </Route>
@@ -95,9 +89,6 @@ export default function Nav() {
     )
     const quanlytour = (
         <div>
-            <Route exact path={match.path}>
-                <Doanhthu />
-            </Route>
             <Route exact path={`${match.path}/tour`}  >
                 <Tour url={match.url} />
             </Route>
@@ -139,6 +130,25 @@ export default function Nav() {
             </Route>
         </div>
     )
+    const quanlykhachsan = (
+        <div>
+            <Route exact path={`${match.path}/hotel`}>
+                <Hotel url={match.url} />
+            </Route>
+            <Route path={`${match.path}/hotel/themkhachsan`}>
+                <ThemKhachSan url={match.url} />
+            </Route>
+            <Route path={`${match.path}/hotel/suakhachsan/:id`}>
+                <ThemKhachSan url={match.url} />
+            </Route>
+            <Route path={`${match.path}/hotel/chitietkhachsan/:id`}>
+                <ChiTietKhachSan />
+            </Route>
+            <Route exact path={`${match.path}/lienhekhachsan`}  >
+                <Lienhekhachsan />
+            </Route>
+        </div>
+    )
     const admin = (
         <div>
             <Route exact path={match.path}>
@@ -153,7 +163,6 @@ export default function Nav() {
             <Route exact path={`${match.path}/chiphi/themchiphi`}>
                 <Themchiphi url={match.url} />
             </Route>
-          
             <Route exact path={`${match.path}/khuyenmai`}  >
                 <Khuyenmai url={match.url} />
             </Route>
@@ -199,7 +208,7 @@ export default function Nav() {
             <Route exact path={`${match.path}/hoadon`}  >
                 <Hoadon url={match.url} />
             </Route>
-            
+
             <Route exact path={`${match.path}/anh`}  >
                 <Anh url={match.url} />
             </Route>
@@ -312,9 +321,6 @@ export default function Nav() {
     )
     const menu_quanlytintuc = (
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={state.collapsed === true ? <span className="fas fa-tachometer-alt" ></span> : <span className="fas fa-tachometer-alt mr-2"></span>}>
-                <Link to="/admin">Doanh thu</Link>
-            </Menu.Item>
             <Menu.Item key="4" icon={state.collapsed === true ? <span className="far fa-newspaper" ></span> : <span className="far fa-newspaper mr-2"></span>}>
                 <Link to={`${match.url}/tintuc`}>Quản lý tin tức</Link>
             </Menu.Item>
@@ -322,9 +328,6 @@ export default function Nav() {
     )
     const menu_quanlybinhluan = (
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={state.collapsed === true ? <span className="fas fa-tachometer-alt" ></span> : <span className="fas fa-tachometer-alt mr-2"></span>}>
-                <Link to="/admin">Doanh thu</Link>
-            </Menu.Item>
             <Menu.Item key="9" icon={state.collapsed === true ? <span className="fas fa-comments" ></span> : <span className="fas fa-comments mr-2"></span>}>
                 <Link to={`${match.url}/binhluan`}>Quản lý bình luận</Link>
             </Menu.Item>
@@ -332,9 +335,6 @@ export default function Nav() {
     )
     const menu_quanlytour = (
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={state.collapsed === true ? <span className="fas fa-tachometer-alt" ></span> : <span className="fas fa-tachometer-alt mr-2"></span>}>
-                <Link to="/admin">Doanh thu</Link>
-            </Menu.Item>
             <Menu.Item key="2" icon={state.collapsed === true ? <span className="fas fa-luggage-cart" ></span> : <span className="fas fa-luggage-cart mr-2"></span>}>
                 <Link to={`${match.url}/tour`}>Quản lý tour</Link>
             </Menu.Item>
@@ -349,6 +349,16 @@ export default function Nav() {
             </Menu.Item>
         </Menu>
     )
+    const menu_quanlykhachsan = (
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <Menu.Item key="20" icon={state.collapsed === true ? <span className="fas fa-hotel"></span> : <span className="fas fa-hotel mr-2"></span>}>
+                <Link to={`${match.url}/hotel`}>Quản lý khách sạn</Link>
+            </Menu.Item>
+            <Menu.Item key="21" icon={state.collapsed === true ? <span className="fas fa-phone"></span> : <span className="fas fa-phone mr-2"></span>}>
+                <Link to={`${match.url}/lienhekhachsan`}>Quản lý liên hệ đặt khách sạn</Link>
+            </Menu.Item>
+        </Menu>
+    )
     const menu_quanlyadmin = (
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1" icon={state.collapsed === true ? <span className="fas fa-tachometer-alt" ></span> : <span className="fas fa-tachometer-alt mr-2"></span>}>
@@ -357,14 +367,13 @@ export default function Nav() {
             <Menu.Item key="19" icon={state.collapsed === true ? <span className="fas fa-money-check-alt"></span> : <span className="fas fa-money-check-alt mr-2"></span>}>
                 <Link to={`${match.url}/chiphi`}>Chi phí</Link>
             </Menu.Item>
-           
             <Menu.Item key="2" icon={state.collapsed === true ? <span className="fas fa-luggage-cart" ></span> : <span className="fas fa-luggage-cart mr-2"></span>}>
                 <Link to={`${match.url}/tour`}>Quản lý tour</Link>
             </Menu.Item>
-                <Menu.Item key="20" icon={state.collapsed === true ? <span className="fas fa-hotel"></span> : <span className="fas fa-hotel mr-2"></span>}>
+            <Menu.Item key="20" icon={state.collapsed === true ? <span className="fas fa-hotel"></span> : <span className="fas fa-hotel mr-2"></span>}>
                 <Link to={`${match.url}/hotel`}>Quản lý khách sạn</Link>
             </Menu.Item>
-            <Menu.Item key="21" icon={state.collapsed === true ? <span className="fas fa-hotel"></span> : <span className="fas fa-hotel mr-2"></span>}>
+            <Menu.Item key="21" icon={state.collapsed === true ? <span className="fas fa-phone"></span> : <span className="fas fa-phone mr-2"></span>}>
                 <Link to={`${match.url}/lienhekhachsan`}>Quản lý liên hệ đặt khách sạn</Link>
             </Menu.Item>
             <Menu.Item key="3" icon={state.collapsed === true ? <span className="fas fa-users" ></span> : <span className="fas fa-users mr-2"></span>}>
@@ -400,7 +409,6 @@ export default function Nav() {
             <Menu.Item key="13" icon={state.collapsed === true ? <span className="fas fa-file-alt" ></span> : <span className="fas fa-file-alt mr-2"></span>}>
                 <Link to={`${match.url}/hoadon`}>Quản lý hoá đơn</Link>
             </Menu.Item>
-           
             <Menu.Item key="14" icon={state.collapsed === true ? <span className="fas fa-user-tag" ></span> : <span className="fas fa-user-tag mr-2"></span>}>
                 <Link to={`${match.url}/role`}>Quản lý phân quyền</Link>
             </Menu.Item>
@@ -417,7 +425,7 @@ export default function Nav() {
             <Menu.Item key="18" icon={state.collapsed === true ? <span className="fas fa-percent" ></span> : <span className="fas fa-percent mr-2"></span>}>
                 <Link to={`${match.url}/khuyenmai`}>Khuyễn mãi</Link>
             </Menu.Item>
-            
+
         </Menu>
     )
     const Menu_Authentication = (role) => {
@@ -436,6 +444,9 @@ export default function Nav() {
                 break;
             case "quản lý tour":
                 return menu_quanlytour
+                break;
+            case "khách sạn":
+                return menu_quanlykhachsan
                 break;
             default:
                 break;
@@ -458,6 +469,9 @@ export default function Nav() {
             case "quản lý tour":
                 return quanlytour
                 break;
+            case "khách sạn":
+                return quanlykhachsan
+                break;
             default:
                 break;
         }
@@ -465,9 +479,9 @@ export default function Nav() {
     return (
         <div id="nav">
             <Layout>
-                <Sider 
-                    trigger={null} 
-                    collapsible 
+                <Sider
+                    trigger={null}
+                    collapsible
                     collapsed={state.collapsed}
                     style={{
                         overflow: 'auto',

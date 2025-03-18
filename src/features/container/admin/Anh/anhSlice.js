@@ -3,19 +3,19 @@ import anhApi from "../../../../api/media/anhApi";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 // Tạo action get all ảnh
-export const anhData = createAsyncThunk('anhs/anhData', async () => {
+export const anhData = createAsyncThunk("anhs/anhData", async () => {
     const response = await anhApi.getAll();
     return response;
-})
+});
 
 const Anh = createSlice({
     name: "anhs",
     initialState: {
         anh: {
-            data: [],  // Khởi tạo là mảng rỗng
+            data: [], // Khởi tạo là mảng rỗng
             loading: false,
-            error: null
-        }
+            error: null,
+        },
     },
     reducers: {
         // Thêm ảnh mới
@@ -30,7 +30,7 @@ const Anh = createSlice({
         // Cập nhật ảnh
         updateanh: (state, action) => {
             anhApi.editanh(action.payload);
-        }
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -40,14 +40,17 @@ const Anh = createSlice({
             .addCase(anhData.fulfilled, (state, action) => {
                 state.anh.loading = false;
                 // Đảm bảo data là mảng
-                state.anh.data = Array.isArray(action.payload) ? action.payload :
-                                Array.isArray(action.payload?.data) ? action.payload.data : [];
+                state.anh.data = Array.isArray(action.payload)
+                    ? action.payload
+                    : Array.isArray(action.payload?.data)
+                    ? action.payload.data
+                    : [];
             })
             .addCase(anhData.rejected, (state, action) => {
                 state.anh.loading = false;
                 state.anh.error = action.error.message;
             });
-    }
+    },
 });
 
 const { reducer, actions } = Anh;

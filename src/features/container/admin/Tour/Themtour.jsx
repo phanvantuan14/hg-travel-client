@@ -62,14 +62,16 @@ function Themtour(props) {
                     suadiadiem.push(`${tour.Diadiems[i].id}`);
                 }
 
-                // Lấy quốc gia ID và địa điểm data
-                const quocgiaId = tour.Diadiems[0].quocgiaId;
-                const diadiemData = await quocgiaApi.getOne(quocgiaId).then(data => {
-                    return data.data.Diadiems;
-                });
+                // Kiểm tra xem có địa điểm và quốc gia không
+                if (tour.Diadiems && tour.Diadiems.length > 0 && tour.Diadiems[0].quocgiaId) {
+                    const quocgiaId = tour.Diadiems[0].quocgiaId;
+                    const diadiemData = await quocgiaApi.getOne(quocgiaId).then(data => {
+                        return data.data.Diadiems;
+                    });
 
-                setDefaultQuocgia(quocgiaId.toString());
-                setlaydiadiem(diadiemData);
+                    setDefaultQuocgia(quocgiaId.toString());
+                    setlaydiadiem(diadiemData);
+                }
 
                 setState({
                     ...state,
@@ -91,7 +93,7 @@ function Themtour(props) {
                     checkdichvu: suadichvu,
                     checkloaitour: sualoaitour,
                     checkngaydi: suangaydi,
-                    quocgiaId: `${quocgiaId}`,
+                    quocgiaId: tour.Diadiems && tour.Diadiems.length > 0 ? `${tour.Diadiems[0].quocgiaId}` : "",
                     noikhoihang: tour.noikhoihang
                 });
                 setngaydiId(suangaydi);
@@ -118,7 +120,7 @@ function Themtour(props) {
     const onSubmit = async (e) => {
         e.preventDefault();
         const { checkdichvu, checkloaitour, checkngaydi, checkdiadiem, diadiemId, dichvuId, loaitourId, noikhoihang } = state
-        if (name.trim() === "" || diadiemId.length === 0 || dichvuId.length === 0 || loaitourId.length === 0 || ngaydiId.length === 0 || gianguoilon === "" || giatreem === "" || giaembe === "" || trailer.trim() === "" || chitiettour.trim() === "" || luuy.trim() === "" || bando.trim() === "" || thoigian === "" || songuoi === "" || noikhoihang.trim() === "") {
+        if (name.trim() === "" || diadiemId.length === 0 || dichvuId.length === 0 || loaitourId.length === 0 || ngaydiId.length === 0 || gianguoilon === "" || giatreem === "" || giaembe === "" || chitiettour.trim() === "" || bando.trim() === "" || thoigian === "" || songuoi === "" || noikhoihang.trim() === "") {
             message.warning("Xin hãy nhập đầy đủ thông tin!");
         } else {
             setState({ ...state, load: true })

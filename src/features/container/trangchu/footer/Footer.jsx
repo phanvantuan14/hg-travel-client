@@ -32,9 +32,9 @@ function Footer(props) {
           <div className="row">
             {footer.map(ok => (
               <div className="col-md-6 mt-md-0 mt-3" key={ok.id}>
-                <h5 className="text-uppercase text-danger">Footer Content</h5>
+                <h6 className="text-uppercase text-danger">About Content</h6>
                 <p className="text-uppercase text-white mt-3">{ok.content}</p>
-                <h5 className="text-uppercase text-danger mt-3">Liên hệ</h5>
+                <h6 className="text-uppercase text-danger mt-3">Liên hệ</h6>
                 <p>
                   <strong>Email: </strong>
                   <i>{ok.email}</i>
@@ -51,37 +51,37 @@ function Footer(props) {
             ))}
             <hr className="clearfix w-100 d-md-none pb-3" />
             <div className="col-md-3 mb-md-0 mb-3">
-              <h5 className="text-uppercase text-danger">Links</h5>
+              <h6 className="text-uppercase text-danger">Links</h6>
 
               <ul className="list-unstyled">
                 <li>
                   <Link to="#">
                     <span className="fa fa-angle-double-right mr-2"></span>
-                  Trang chủ
-               </Link>
+                    Trang chủ
+                  </Link>
                 </li>
                 <li>
                   <Link to="#">
                     <span className="fa fa-angle-double-right mr-2"></span>
                     Tin tức
-               </Link>
+                  </Link>
                 </li>
                 <li>
                   <Link to="#">
                     <span className="fa fa-angle-double-right mr-2"></span>
-                  Dịch vụ
-               </Link>
+                    Dịch vụ
+                  </Link>
                 </li>
                 <li>
                   <Link to="#">
                     <span className="fa fa-angle-double-right mr-2"></span>
-                  Khuyến mãi
-               </Link>
+                    Khuyến mãi
+                  </Link>
                 </li>
               </ul>
             </div>
             <div className="col-md-3 mb-md-0 mb-3 mxh ">
-              <h5 className="text-uppercase text-danger ">Mạng xã hội</h5>
+              <h6 className="text-uppercase text-danger ">Mạng xã hội</h6>
               {mxh.map(ok => (
                 <div key={ok.id} onClick={() => chuyentrang(ok.link)}>
                   <div className="icon_footer" style={{
@@ -96,10 +96,10 @@ function Footer(props) {
           </div>
         </div>
         <div className="footer-copyright text-center py-3">
-            © 2025 Copyright:
+          © 2025 Copyright:
           <Link to="https://mdbootstrap.com/" className="text-danger ml-2">
-              Công ty cổ phần thương mại Hà Giang - HG Tourism Agency.
-        </Link>
+            Công ty cổ phần thương mại Hà Giang - HG Tourism Agency.
+          </Link>
         </div>
       </footer>
     </div >

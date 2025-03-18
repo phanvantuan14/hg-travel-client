@@ -174,8 +174,10 @@ export default function Listtour() {
                             }}
                         />
                     </div>
-                    <div className="content_tour">
-                        <div className="title_tour text-capitalize">{ok.name}</div>
+                    <div className="content_tour bg-gray">
+                        <div className="title_tour text-capitalize">
+                            {ok.name}
+                        </div>
                         <div className="star float-left">
                             <Rate value={tinhdiem(ok.id)} disabled />
                         </div>
@@ -210,17 +212,17 @@ export default function Listtour() {
             <div className="container">
                 <div className="row mb-4 bg-white rounded">
                     <div className="col-md-3 border-right pb-3 bg ">
-                        <h4 className="pt-4">Tìm kiếm tour</h4>
+                        <h5 className="pt-4">Tìm kiếm tour</h5>
                         <Search placeholder="Tìm kiếm tour" onSearch={search} enterButton />
 
-                        <h4 className="mt-3">Loại tour</h4>
+                        <h5 className="mt-3">Loại tour</h5>
                         <Select className="w-100" defaultValue="trong" style={{ width: 120 }} onChange={handleChange}>
                             <Option value="trong">Tour trong nước</Option>
                             <Option value="ngoai">Tour nước ngoài</Option>
                         </Select>
                         {state.check === "trong" ?
                             <div>
-                                <h4 className="mt-3">Vùng</h4>
+                                <h5 className="mt-3">Vùng</h5>
                                 <Select className="w-100" defaultValue="trung" style={{ width: 120 }}>
                                     <Option value="bac">Miền Bắc</Option>
                                     <Option value="trung">Miền Trung</Option>
@@ -228,7 +230,7 @@ export default function Listtour() {
                                 </Select>
                             </div> : ""
                         }
-                        <h4 className="mt-3">Đánh giá</h4>
+                        <h5 className="mt-3">Đánh giá</h5>
                         <div className="star-mid text-primary">
                             <ul>
                                 <li className="active"><span onClick={() => checkstar(5)} style={{ cursor: "pointer" }}><Rate value="5" disabled /><span className="ml-2">từ 5 sao</span><br /></span></li>
@@ -242,7 +244,7 @@ export default function Listtour() {
                     </div>
                     <div className="col-md-9">
                         <div className="title text-center mt-3">
-                            <h3>TOUR DU LỊCH</h3>
+                            <h4 className="mb-0">TOUR DU LỊCH</h4>
                             <div className="hr w-25"></div>
                         </div>
                         <div className="box-tour">

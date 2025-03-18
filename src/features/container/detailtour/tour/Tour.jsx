@@ -1,6 +1,7 @@
 import { Carousel, message, Popover, Radio, Rate, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import renderHTML from 'react-render-html';
 import "./tour.css";
 import { Button } from "@material-ui/core";
 import { useParams } from "react-router-dom";
@@ -14,7 +15,6 @@ import taikhoanApi from "../../../../api/user/taikhoanApi";
 import { ngaydiData } from "../../admin/Ngaydi/ngaydiSlice";
 import vnpayApi from "../../../../api/payment/vnpayApi";
 import Hinhthucthanhtoan from "../vnpay/Hinhthucthanhtoan";
-
 function Tour(props) {
     const { id } = useParams();
     const dispatch = useDispatch();
@@ -332,76 +332,6 @@ function Tour(props) {
         }
     };
 
-    // const handleOk2 = async () => {
-    //     if (state.dieukhoan === false) {
-    //         message.warning("Bạn chưa đồng ý điều khoản của chúng tôi!");
-    //         return;
-    //     }
-
-    //     try {
-    //         const userId = await taikhoanApi.getOne(+users.id).then((data) => data.id);
-    //         const tourId = id;
-    //         const tongtien = thanhtien(tour_ngay[0].giatreem, tour_ngay[0].giaembe);
-    //         const ngaydi = state.date === "" ? formatlaidate(checkngaydi()) : state.date;
-
-    //         if (paymentMethod === 2) { // VNPAY
-    //             const orderData = {
-    //                 tourId,
-    //                 userId,
-    //                 nguoilon,
-    //                 treem,
-    //                 embe,
-    //                 ngaydi,
-    //                 thanhtien: tongtien,
-    //                 status: 0,
-    //             };
-
-    //             // Lưu thông tin đơn hàng vào localStorage
-    //             localStorage.setItem("pendingTourOrder", JSON.stringify(orderData));
-
-    //             const params = {
-    //                 amount: tongtien,
-    //                 orderInfo: `Thanh toan tour ${tour_ngay[0].name}`,
-    //                 orderType: "tour",
-    //                 tourId: id,
-    //                 bankCode: "", // Có thể thêm bankCode nếu cần
-    //                 language: "vn",
-    //             };
-
-    //             const response = await vnpayApi.createPaymentUrl(params);
-    //             if (response.url) {
-    //                 window.location.href = response.url;
-    //             } else {
-    //                 throw new Error("Không nhận được URL thanh toán");
-    //             }
-    //         } else {
-    //             // Xử lý thanh toán thường
-    //             await dispatch(addhoadon({
-    //                 tourId,
-    //                 userId,
-    //                 nguoilon,
-    //                 treem,
-    //                 embe,
-    //                 ngaydi,
-    //                 thanhtien: tongtien,
-    //                 status: 0,
-    //             }));
-
-    //             setState({
-    //                 ...state,
-    //                 visible2: false,
-    //                 visible: false,
-    //                 loadlaihoadon: state.loadlaihoadon + 1,
-    //             });
-
-    //             dispatch(hoadonData());
-    //             message.success("Đặt tour thành công!");
-    //         }
-    //     } catch (error) {
-    //         console.error("Payment error:", error);
-    //         message.error("Có lỗi xảy ra trong quá trình thanh toán!");
-    //     }
-    // };
 
     const handleCancel2 = (e) => {
         setState({
@@ -500,14 +430,14 @@ function Tour(props) {
                                                 />
                                             </div>
                                         </Carousel>
-                                        <h3>{ok.name}</h3>
+                                        <h3 className="p-2">{ok.name}</h3>
                                     </div>
-                                    <div className="star-rating">
+                                    <div className="star-rating ml-4">
                                         <Rate value={tinhdiem()} disabled />
-                                        <span className="ml-3">
+                                        <span className="ml-3 float-left">
                                             <strong>{tinhdiem()}/5</strong> điểm
                                         </span>
-                                        <span className="ml-3">
+                                        <span className="ml-3 float-left">
                                             <strong>
                                                 {binhluanload.length}
                                             </strong>{" "}
@@ -645,6 +575,11 @@ function Tour(props) {
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                        </div>
+                                        <div className="bando-container">
+                                            <div className="map-wrapper">
+                                                {renderHTML(ok.bando)}
+                                            </div>
                                         </div>
                                         <div className="price position-absolute">
                                             <span>

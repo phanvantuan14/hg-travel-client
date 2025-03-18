@@ -57,6 +57,9 @@ function Login(props) {
     const hangdleDK = () => {
         history.push('/dangky')
     }
+    const hangdleResetPassword = () => {
+        history.push('/forgot-password')
+    }
     const validateEmail = (email) => {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
@@ -86,12 +89,10 @@ function Login(props) {
                         </div>
 
                         <div className="form-group form-check">
-                            <label className="form-check-label">
-                                <input className="form-check-input" type="checkbox" onChange="onclick" /> <span className="text-light">Nhớ mật khẩu</span>
-                            </label>
-                            <Link to="#" onClick={hangdleDK} className="float-right text-light">Chưa có tài khoản?</Link>
+                            <Link to="#" onClick={hangdleResetPassword} className="float-right text-light">Quên mật khẩu?</Link>
+                            <Link to="#" onClick={hangdleDK} className="float-left text-light">Chưa có tài khoản?</Link>
                         </div>
-                        <Button type="submit" variant="contained" color="primary" className="w-100 mb-4">Đăng nhập</Button>
+                        <Button type="submit" variant="contained" color="primary" className="w-100 mt-3 mb-4">Đăng nhập</Button>
                     </form>
                     <p className="or">OR</p>
                     <div className="mxh mt-3">

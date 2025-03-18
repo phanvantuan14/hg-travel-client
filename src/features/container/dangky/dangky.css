@@ -1,14 +1,19 @@
 #dangky {
     height: 100vh;
-    background: url("./../../images/dangky5.jpg") center;
+    background: url("./../../images/tour-hg/Màu\ xuân\ cao\ nguyên.jpg") center;
     background-size: cover;
     margin-top: -70px;
 }
+
 #dangky .box-login {
     width: 35%;
     margin: 0 auto;
     position: relative;
-    top: 110px;
+    top: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
 }
 #dangky .form {
     width: 100%;

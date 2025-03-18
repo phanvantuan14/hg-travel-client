@@ -93,7 +93,7 @@ function Dangky(props) {
                         <div className="form-group form-check">
                             <Link onClick={handgleLG} className="float-right text-light">Đã có tài khoản?</Link>
                         </div>
-                        <Button type="submit" variant="contained" color="primary" className="w-100 mb-4">Đăng ký</Button>
+                        <Button type="submit" variant="contained" color="primary" className="w-100 mt-3 mb-4">Đăng ký</Button>
                     </form>
                     <p className="or">OR</p>
                     <div className="mxh mt-3">

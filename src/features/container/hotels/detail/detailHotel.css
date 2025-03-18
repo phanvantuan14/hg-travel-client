@@ -3,22 +3,19 @@
     /* padding: 2rem 0; */
 }
 
-
-
 /* Title section */
 #detailHotel .content___title {
     background: white;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    /* margin-bottom: 2rem; */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 #detailHotel .content___title---name h3 {
     text-transform: capitalize;
-    font-size: 2.2rem;
+    font-size: 1.7rem;
     color: #2d4271;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 #detailHotel .content___title---star {
@@ -29,9 +26,8 @@
 /* Content box */
 #detailHotel .content___box {
     background: white;
-    padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Carousel */
@@ -43,7 +39,7 @@
 
 #detailHotel .content___box---slide img {
     width: 100%;
-    height: 450px;
+    height: 330px;
     object-fit: cover;
 }
 
@@ -51,7 +47,7 @@
 #detailHotel .pdBox {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     height: 100%;
 }
 
@@ -59,10 +55,11 @@
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 1.5rem;
+    height: 150px;
 }
 
 #detailHotel .content___box---infor {
-    padding: 1.5rem;
+    padding: 0.2rem;
 }
 
 #detailHotel .content___box---infor---address {
@@ -94,24 +91,23 @@
 /* Button */
 #detailHotel .content___box---infor---btn {
     text-align: center;
-    padding: 1rem 0;
+    padding: 0.6rem 0;
 }
 
 #detailHotel .btn-dt {
-    padding: 12px 40px ;
-    font-size: 1rem ;
-    font-weight: 600 ;
-    text-transform: uppercase ;
-    border-radius: 30px ;
-    transition: all 0.3s ease ;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 10px;
+    transition: all 0.3s ease;
     margin-left: -50px;
 }
 
 #detailHotel .btn-dt:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-
 
 #detailHotel .content___box---contact {
     font-size: 0.9rem;
@@ -127,13 +123,10 @@
 }
 
 #detailHotel .info-item {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
 }
 
-
-
 /*# sourceMappingURL=style.css.map */
-  

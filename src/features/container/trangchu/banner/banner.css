@@ -1,14 +1,10 @@
 #banner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: auto;
     margin-top: 70px;
 }
 
 .fit {
     width: 100%;
-    height: calc(74vh - 70px) !important;
+    height: calc(100vh - 70px) !important;
 }
 
 .fit::before {

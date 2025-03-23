@@ -8,13 +8,11 @@ import { Link } from 'react-router-dom';
 function Diadiemuathich() {
     const [favoriteDestinations, setFavoriteDestinations] = useState([]);
     const diadiemData = useSelector(state => state.diadiems.diadiem.data);
-    console.log(diadiemData)
     const tourData = useSelector(state => state.tours.tour.data);
 
     useEffect(() => {
         if (!diadiemData || !tourData) return;
 
-        // Lấy danh sách địa điểm có ảnh từ tour
         const processedDestinations = diadiemData
             .map(diadiem => {
                 const relatedTour = tourData.find(tour =>
@@ -41,7 +39,6 @@ function Diadiemuathich() {
         setFavoriteDestinations(processedDestinations);
     }, [diadiemData, tourData]);
 
-    // Chia mảng thành các nhóm 4 phần tử
     const chunks = [];
     for (let i = 0; i < favoriteDestinations.length; i += 4) {
         chunks.push(favoriteDestinations.slice(i, i + 4));

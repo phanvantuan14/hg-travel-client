@@ -2,16 +2,19 @@ import chitieuApi from "../../../../api/service/chitieuApi";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
-export const chitieuData = createAsyncThunk('chitieus/chitieuData', async () => {
-    const chitieu = await chitieuApi.getAll();
-    return chitieu;
-})
+export const chitieuData = createAsyncThunk(
+    "chitieus/chitieuData",
+    async () => {
+        const chitieu = await chitieuApi.getAll();
+        return chitieu;
+    }
+);
 const Chitieu = createSlice({
     name: "chitieus",
     initialState: {
         chitieu: [],
         loading: true,
-        error: ''
+        error: "",
     },
     reducers: {
         addchitieu: (state, action) => {
@@ -22,7 +25,7 @@ const Chitieu = createSlice({
         },
         updatechitieu: (state, action) => {
             chitieuApi.editchitieu(action.payload);
-        }
+        },
     },
     extraReducers: {
         [chitieuData.pending]: (state) => {
@@ -35,8 +38,8 @@ const Chitieu = createSlice({
         [chitieuData.fulfilled]: (state, action) => {
             state.loading = false;
             state.chitieu = action.payload;
-        }
-    }
+        },
+    },
 });
 const { reducer, actions } = Chitieu;
 export const { addchitieu, removechitieu, updatechitieu } = actions;

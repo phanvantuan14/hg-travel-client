@@ -1,6 +1,6 @@
-import axios from 'axios';
-import queryString from 'query-string';
-import firebase from "firebase"
+import axios from "axios";
+import queryString from "query-string";
+import firebase from "firebase";
 
 const getFirebasetoken = async () => {
     const currenUser = firebase.auth().currentUser;
@@ -11,39 +11,42 @@ const getFirebasetoken = async () => {
     if (!hasRememberAccount) return null;
 
     return new Promise((resolve, reject) => {
-        const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
-            if (!user) {
-                reject(null)
-            }
-            const token = await user.getIdToken();
-            console.log("axios token" + token);
-            resolve(token);
-            unregisterAuthObserver();
-        }
-        )
-    })
-}
+        const unregisterAuthObserver = firebase
+            .auth()
+            .onAuthStateChanged(async (user) => {
+                if (!user) {
+                    reject(null);
+                }
+                const token = await user.getIdToken();
+                console.log("axios token" + token);
+                resolve(token);
+                unregisterAuthObserver();
+            });
+    });
+};
 const axiosClient = axios.create({
     baseURL: `http://localhost:666`,
     headers: {
-        'content-type': "application/json",
+        "content-type": "application/json",
     },
-    paramsSerializer: params => queryString.stringify(params),
+    paramsSerializer: (params) => queryString.stringify(params),
 });
 axiosClient.interceptors.request.use(async (config) => {
     const token = localStorage.getItem("token");
     if (token) {
-        config.headers.authorization = `Bearer ${token}`
-        //console.log(token);
+        config.headers.authorization = `Bearer ${token}`;
     }
     return config;
-})
-axiosClient.interceptors.response.use((response) => {
-    if (response && response.data) {
-        return response.data;
-    }
-    return response;
-}, (error) => {
-    throw error;
 });
+axiosClient.interceptors.response.use(
+    (response) => {
+        if (response && response.data) {
+            return response.data;
+        }
+        return response;
+    },
+    (error) => {
+        throw error;
+    }
+);
 export default axiosClient;

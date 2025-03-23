@@ -199,6 +199,7 @@ export default function Nav() {
             <Route exact path={`${match.path}/camnangdulich`}  >
                 <Camnangdulich url={match.url} />
             </Route>
+
             <Route exact path={`${match.path}/lienhe`}  >
                 <Lienhe url={match.url} />
             </Route>
@@ -239,7 +240,7 @@ export default function Nav() {
             <Route exact path={`${match.path}/role`}  >
                 <Role url={match.url} />
             </Route>
-            <Route exact path={`${match.path}/themcamnangdulich`}  >
+            <Route exact path={`${match.path}/camnangdulich/themcamnangdulich`}  >
                 <Themcamnang />
             </Route>
             <Route path={`${match.path}/tag/themtag`}  >
@@ -379,6 +380,9 @@ export default function Nav() {
             <Menu.Item key="3" icon={state.collapsed === true ? <span className="fas fa-users" ></span> : <span className="fas fa-users mr-2"></span>}>
                 <Link to={`${match.url}/taikhoan`}>Quản lý tài khoản</Link>
             </Menu.Item>
+            <Menu.Item key="14" icon={state.collapsed === true ? <span className="fas fa-user-tag" ></span> : <span className="fas fa-user-tag mr-2"></span>}>
+                <Link to={`${match.url}/role`}>Quản lý phân quyền</Link>
+            </Menu.Item>
             <Menu.Item key="4" icon={state.collapsed === true ? <span className="far fa-newspaper" ></span> : <span className="far fa-newspaper mr-2"></span>}>
                 <Link to={`${match.url}/tintuc`}>Quản lý tin tức</Link>
             </Menu.Item>
@@ -409,9 +413,7 @@ export default function Nav() {
             <Menu.Item key="13" icon={state.collapsed === true ? <span className="fas fa-file-alt" ></span> : <span className="fas fa-file-alt mr-2"></span>}>
                 <Link to={`${match.url}/hoadon`}>Quản lý hoá đơn</Link>
             </Menu.Item>
-            <Menu.Item key="14" icon={state.collapsed === true ? <span className="fas fa-user-tag" ></span> : <span className="fas fa-user-tag mr-2"></span>}>
-                <Link to={`${match.url}/role`}>Quản lý phân quyền</Link>
-            </Menu.Item>
+
             <Menu.Item key="15" icon={state.collapsed === true ? <span className="fas fa-id-card" ></span> : <span className="fas fa-id-card mr-2"></span>}>
                 <Link to={`${match.url}/lienhe`}>Quản lý liên hệ</Link>
             </Menu.Item>

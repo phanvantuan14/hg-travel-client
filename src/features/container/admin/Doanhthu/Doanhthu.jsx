@@ -3,7 +3,7 @@ import { Modal, Progress } from "antd";
 import { Button } from "@material-ui/core";
 import "./doanhthu.css";
 import { useDispatch, useSelector } from "react-redux";
-import { chitieuData } from "./chitieuSlice";
+import { chitieuData, updatechitieu } from "./chitieuSlice";
 import { userData } from "../taikhoan/taikhoanSlice";
 
 export default function Doanhthu() {
@@ -14,12 +14,38 @@ export default function Doanhthu() {
         chitieunam: "",
     });
 
+    const chitieu = useSelector((state) => state.chitieu.chitieu.data);
+
     const showModal = () => {
         setIsModalVisible(true);
     };
 
-    const handleOk = () => {
-        setIsModalVisible(false);
+    const handleOk = async () => {
+        try {
+            if (!chitieu || chitieu.length === 0) {
+                console.log("Không tìm thấy dữ liệu chỉ tiêu!");
+                return;
+            }
+            const chitieuId = chitieu[0].id;
+            const updateChitieu = {
+                idsua: chitieuId,
+                chitieungay: state.chitieungay,
+                chitieuthang: state.chitieuthang,
+                chitieunam: state.chitieunam,
+            }
+
+            await dispatch(updatechitieu(updateChitieu));
+
+            setTimeout(async () => {
+                await actionChitiet();
+                console.log("Cập nhật chỉ tiêu thành công!");
+            }, 500);
+
+            setIsModalVisible(false);
+        }
+        catch {
+            console.log("Error updating chitieu");
+        }
     };
     const chiphi = useSelector((state) => state.chiphis.chiphi.data);
     const dispatch = useDispatch();
@@ -35,7 +61,6 @@ export default function Doanhthu() {
         }
     }
     const actionChitiet = async () => await dispatch(chitieuData());
-    const chitieu = useSelector((state) => state.chitieu.chitieu.data);
     useEffect(() => {
         actionResult();
         if (chitieu) {

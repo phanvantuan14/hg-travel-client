@@ -5,7 +5,6 @@ import mk from './../../images/mk.png'
 import { BrowserRouter as Router, Link, useHistory, Redirect } from 'react-router-dom'
 import { Button } from '@material-ui/core';
 import firebase from "firebase"
-import { StyledFirebaseAuth } from 'react-firebaseui'
 import { message } from 'antd'
 import { checklogin, inforData } from "./inforSlice"
 import { useDispatch } from 'react-redux'

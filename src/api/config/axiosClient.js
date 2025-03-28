@@ -26,6 +26,7 @@ const getFirebasetoken = async () => {
 };
 const axiosClient = axios.create({
     baseURL: `http://localhost:666`,
+    // baseURL: `https://c831-113-183-98-222.ngrok-free.app/`,
     headers: {
         "content-type": "application/json",
     },

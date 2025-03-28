@@ -45,9 +45,10 @@ export default function Hotel() {
                 <Link to={`/detailhotel/${hotel.id}`}>
                     <div className="content___box border">
                         <div className="content___box---img">
-                            <img 
-                                src={hotel.avatar} 
-                                alt={hotel.name} 
+                            <img
+                                className="img-fluid"
+                                src={hotel.avatar}
+                                alt={hotel.name}
                                 onError={(e) => {
                                     e.target.onerror = null;
                                     e.target.src = '/default-hotel.jpg'

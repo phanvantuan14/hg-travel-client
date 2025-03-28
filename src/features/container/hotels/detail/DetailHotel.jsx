@@ -33,8 +33,6 @@ export default function DetailHotel() {
     return (
         <div id="detailHotel">
             <div className="container">
-
-
                 <div className="content">
                     <div className="content___title">
                         <div className="content___title---name">

@@ -1,109 +1,106 @@
 #hotel {
-  margin-top: 80px;
+    margin-top: 80px;
 }
-
-
 
 #hotel .content___box {
-  margin-bottom: 1rem;
-  overflow: hidden;
-  border-radius: 5px;
-  height: 458px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 5px;
+    height: 458px;
 }
 #hotel .content___box:hover img {
-  transform: scale(1);
-  filter: brightness(50%);
+    transform: scale(1);
+    filter: brightness(50%);
 }
 
 #hotel .content___box---img img {
-  transform: scale(1.08);
-  z-index: 1;
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  filter: brightness(60%);
-  transition: 0.5s;
+    transform: scale(1.08);
+    z-index: 1;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    filter: brightness(60%);
+    transition: 0.5s;
 }
 #hotel .content___box---title {
-  cursor: default;
-  width: 90%;
-  height: 100px;
-  color: white;
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  transition: 0.5s;
-  background-color: rgba(51, 42, 48, 0.5);
+    cursor: default;
+    width: 90%;
+    height: 100px;
+    color: white;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    transition: 0.5s;
+    background-color: rgba(51, 42, 48, 0.5);
 }
 #hotel .content___box---title---name {
-  padding-top: 10px;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: bold;
+    padding-top: 10px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 #hotel .content___box---title---name span {
-  color: white;
-}
-   
-#hotel .content___box---title---price {
-  font-size: 1.1rem;
-}
-#hotel .content___box---title---price span {
-  color: #ccc7c7;
-}
-#hotel .content___box---title---price .price-text {
-  color: #ffc107;
+    color: white;
 }
 
-#hotel .container a{
+#hotel .content___box---title---price {
+    font-size: 1.1rem;
+}
+#hotel .content___box---title---price span {
+    color: #ccc7c7;
+}
+#hotel .content___box---title---price .price-text {
+    color: #ffc107;
+}
+
+#hotel .container a {
     color: white;
 }
 #hotel .content___box---btn button {
-  padding: 0.5rem 1rem;
-  outline: none;
-  border: none;
-  display: flex;
-  justify-content: center;
-  background-color: red;
-  border: 1px solid white;
-  margin: 0 auto;
-  transition: 0.5s;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    border: 1px solid white;
+    margin: 0 auto;
+    transition: 0.5s;
 }
 
-  
 @media (max-width: 1125px) {
-  #hotel .content___box {
-    height: 430px;
-  }
-  
-  #hotel .content___box---title {
-    top: 85%;
-  }
-  #hotel .content---btn {
-    position: relative;
-    top: 10px;
-    transition: 0.5s;
-  }
+    #hotel .content___box {
+        height: 430px;
+    }
+
+    #hotel .content___box---title {
+        top: 85%;
+    }
+    #hotel .content---btn {
+        position: relative;
+        top: 10px;
+        transition: 0.5s;
+    }
 }
 @media (max-width: 576px) {
-  #hotel .content___box {
-    height: 430px;
-  }
+    #hotel .content___box {
+        height: 430px;
+    }
 
-  #hotel .content___box---title {
-    top: 85%;
-  }
-  #hotel .content---btn {
-    position: relative;
-    top: 10px;
-    transition: 0.5s;
-  }
+    #hotel .content___box---title {
+        top: 85%;
+    }
+    #hotel .content---btn {
+        position: relative;
+        top: 10px;
+        transition: 0.5s;
+    }
 }
-  
-  /*# sourceMappingURL=style.css.map */
-  
+
+/*# sourceMappingURL=style.css.map */
+
 /* Thêm style cho phân trang */
 .ant-pagination {
     margin: 20px 0;
@@ -138,9 +135,8 @@
     .ant-pagination {
         margin: 15px 0;
     }
-    
+
     .ant-pagination-options {
         display: none;
     }
 }
-  
